@@ -37,20 +37,15 @@ void Tubo::desenhar() {
 
 
 bool Tubo::colide(int jogador_x, int jogador_y, int jogador_largura, int jogador_altura) {
+    if (jogador_x + jogador_largura > this->x && jogador_x < this->x + LARGURA_TUBO) {
+        if (jogador_y < this->altura_abertura) {
+            return true;
+        }
+        
+        if (jogador_y + jogador_altura > this->altura_abertura + ESPACO_ENTRE_TUBOS) {
+            return true;
+        }
+    }
     
-    if ((jogador_x + jogador_largura > this->x) &&                                       // O lado direito do jogador passou o lado esquerdo do tubo
-        (jogador_x < this->x + LARGURA_TUBO) &&                                           // O lado esquerdo do jogador ainda não passou o lado direito do tubo
-        (jogador_y + jogador_altura > this->altura_abertura - ALTURA_TUBO) &&
-        (jogador_y < this->altura_abertura)) {
-        return true;
-    }
-
-    if ((jogador_x + jogador_largura > this->x) &&
-        (jogador_x < this->x + LARGURA_TUBO) &&
-        (jogador_y + jogador_altura > this->altura_abertura + ESPACO_ENTRE_TUBOS) &&
-        (jogador_y < this->altura_abertura + ESPACO_ENTRE_TUBOS + ALTURA_TUBO)) {
-        return true;
-    }
-
     return false;
 }
