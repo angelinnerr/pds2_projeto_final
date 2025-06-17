@@ -125,6 +125,7 @@ int main() {
                     for (int i = 0; i < NUM_TUBOS; ++i) {
                         // solução temporária para tubos e pontuação parar de atualizar depois do fim do jogo
                         if (estado_atual != FIM_DE_JOGO){
+                            al_play_sample_instance(inst_musica_tema);
                             tubos[i].atualizar();
                             pontuacao.verificar(jogador.x, tubos[i].x);
                         }
@@ -152,6 +153,7 @@ int main() {
                         al_draw_text(fonte, al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 50, ALLEGRO_ALIGN_CENTER, "Pressione espaco para comecar!");
                     }
                     else if (estado_atual == FIM_DE_JOGO) {
+                        al_stop_sample_instance(inst_musica_tema);
                         al_draw_text(fonte, al_map_rgb(255, 0, 0), LARGURA_TELA / 2, ALTURA_TELA / 2 - 20, ALLEGRO_ALIGN_CENTER, "GAME OVER");
                         al_draw_text(fonte, al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 + 20, ALLEGRO_ALIGN_CENTER, "Pressione R para reiniciar");
                     }
