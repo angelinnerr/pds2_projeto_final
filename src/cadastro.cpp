@@ -1,6 +1,8 @@
 #include "cadastro.hpp"
 #include <fstream>
 #include <iostream>
+#include <algorithm>
+#include <sstream>
 
 Cadastro::Cadastro(ALLEGRO_FONT* fonte) : fonte(fonte) {}
 Cadastro::~Cadastro() {
@@ -149,7 +151,7 @@ bool Cadastro::carregar_jogadores(const string& arquivo) {
     while (getline(in, linha)) {
         Jogador j;
         replace(linha.begin(), linha.end(), ';', ' ');
-        istringstream iss(linha);
+        stringstream iss(linha);
         iss >> j.apelido_unico >> j.nome >> j.pontuacao >> j.numero_de_jogos >> j.melhor_pontuacao
             >> j.cor_r >> j.cor_g >> j.cor_b >> j.caminho_avatar;
         j.cor = al_map_rgb(j.cor_r, j.cor_g, j.cor_b);
