@@ -1,5 +1,7 @@
 all: main
-
+src/cadastro.o: include/cadastro.hpp include/constants.h src/cadastro.cpp
+	g++ -o src/cadastro.o -c src/cadastro.cpp -Iinclude -I/opt/homebrew/Cellar/allegro/5.2.10.1_1/include
+	
 src/fundo.o: include/fundo.hpp include/constants.h src/fundo.cpp
 	g++ -o src/fundo.o -c src/fundo.cpp -Iinclude -I/opt/homebrew/Cellar/allegro/5.2.10.1_1/include
 
@@ -16,4 +18,4 @@ src/main.o: src/main.cpp include/constants.h
 	g++ -o src/main.o -c src/main.cpp -Iinclude -I/opt/homebrew/Cellar/allegro/5.2.10.1_1/include
 
 main: src/main.o src/fundo.o src/jogador.o src/tubo.o src/pontos.o
-	g++ src/main.o src/fundo.o src/jogador.o src/tubo.o src/pontos.o -o main `pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5`
+	g++ src/main.o src/fundo.o src/jogador.o src/tubo.o src/pontos.o src/cadastro.o -o main `pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5`
