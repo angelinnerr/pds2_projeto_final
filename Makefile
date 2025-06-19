@@ -1,7 +1,15 @@
 all: main
+<<<<<<< HEAD
 
 main: obj/main.o obj/fundo.o obj/jogador.o obj/tubo.o obj/pontos.o
 	g++ obj/main.o obj/fundo.o obj/jogador.o obj/tubo.o obj/pontos.o -o main `pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5`
+=======
+src/cadastro.o: include/cadastro.hpp include/constants.h src/cadastro.cpp
+	g++ -o src/cadastro.o -c src/cadastro.cpp -Iinclude -I/opt/homebrew/Cellar/allegro/5.2.10.1_1/include
+	
+src/fundo.o: include/fundo.hpp include/constants.h src/fundo.cpp
+	g++ -o src/fundo.o -c src/fundo.cpp -Iinclude -I/opt/homebrew/Cellar/allegro/5.2.10.1_1/include
+>>>>>>> cd646ef3cf949f2ec75ec8b3b7a1f68ca62012e5
 
 obj/fundo.o: src/fundo.cpp include/fundo.hpp include/constants.h
 	mkdir -p obj
@@ -19,9 +27,14 @@ obj/pontos.o: src/pontos.cpp include/pontos.hpp
 	mkdir -p obj
 	g++ -o obj/pontos.o -c src/pontos.cpp -Iinclude -I/opt/homebrew/Cellar/allegro/5.2.10.1_1/include
 
+<<<<<<< HEAD
 obj/main.o: src/main.cpp include/constants.h
 	mkdir -p obj
 	g++ -o obj/main.o -c src/main.cpp -Iinclude -I/opt/homebrew/Cellar/allegro/5.2.10.1_1/include
 
 clean:
 	rm -rf obj main
+=======
+main: src/main.o src/fundo.o src/jogador.o src/tubo.o src/pontos.o
+	g++ src/main.o src/fundo.o src/jogador.o src/tubo.o src/pontos.o src/cadastro.o -o main `pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5`
+>>>>>>> cd646ef3cf949f2ec75ec8b3b7a1f68ca62012e5

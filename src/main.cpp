@@ -168,8 +168,9 @@ int main() {
                         al_stop_sample_instance(inst_musica_tema);
                         al_draw_text(fonte2, al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 40, ALLEGRO_ALIGN_CENTER, "GAME OVER");
                         al_draw_text(sombra_fonte2, al_map_rgb(255, 0, 0), LARGURA_TELA / 2, ALTURA_TELA / 2 - 40, ALLEGRO_ALIGN_CENTER, "GAME OVER");
-                        al_draw_text(fonte, al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 + 50, ALLEGRO_ALIGN_CENTER, "Pressione R para reiniciar");
-                        al_draw_text(fonte, al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA - 100, ALLEGRO_ALIGN_CENTER, "Pressione esc para sair");
+                        al_draw_text(fonte, al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 + 70, ALLEGRO_ALIGN_CENTER, "Pressione R para reiniciar");
+                        al_draw_text(fonte, al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA - 90, ALLEGRO_ALIGN_CENTER, "Pressione esc para sair");
+                        
                     }
 
                     al_flip_display();
