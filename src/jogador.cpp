@@ -3,7 +3,7 @@
 #include <allegro5/allegro_image.h>
 
 Jogador::Jogador() { // construtor
-    x = 100;
+    x = 300;
     y = ALTURA_TELA / 2;
     velocidade_y = 0;
 
