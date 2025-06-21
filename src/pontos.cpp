@@ -32,3 +32,12 @@ void Pontos::atualizar(){
     al_draw_text(fonte_score, al_map_rgb(255,255,255), LARGURA_TELA/2, ALTURA_TELA/4, ALLEGRO_ALIGN_CENTER, score_text.c_str());
 }
 
+void Pontos::reset() {
+    this->score = 0;
+}
+
+int Pontos::getScore() const {
+    return score;
+}
+
+

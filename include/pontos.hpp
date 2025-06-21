@@ -20,6 +20,9 @@ class Pontos{
         void verificar(int posicaoJogador, int posicaoTubo);
         void atualizar();
         void game_over();
+        void reset();
+        int getScore() const; 
+
         
     private:
         int score;
