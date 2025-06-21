@@ -1,166 +1,161 @@
 #include "cadastro.hpp"
-#include <fstream>
-#include <iostream>
 #include <algorithm>
-#include <sstream>
+#include <fstream>
+#include <allegro5/allegro_native_dialog.h>
 
-Cadastro::Cadastro(ALLEGRO_FONT* fonte) : fonte(fonte) {}
-Cadastro::~Cadastro() {
-    for (auto& jogador : jogadores) {
-        if (jogador.avatar) {
-            al_destroy_bitmap(jogador.avatar);
-        }
-    }
+RegistroJogador::RegistroJogador(std::string apelido, int ultima, int recorde, ALLEGRO_COLOR cor) :
+    apelido(apelido), ultima_pontuacao(ultima), recorde(recorde), cor(cor) {}
+
+Cadastro::Cadastro(const std::string& arquivo, ALLEGRO_FONT* fonte) :
+    arquivo_dados(arquivo), fonte(fonte) {
+    carregar_dados();
 }
 
-bool Cadastro::apelido_existe(const string& apelido) const {
-    for (const auto& j : jogadores) {
-        if (j.apelido_unico == apelido)
-            return true;
+bool Cadastro::processar_tela_cadastro(ALLEGRO_EVENT_QUEUE* fila_eventos, 
+                                     ALLEGRO_DISPLAY* display, 
+                                     std::string& apelido_saida) {
+    std::string apelido;
+    bool concluido = false;
+    
+    while(!concluido) {
+        ALLEGRO_EVENT evento;
+        al_wait_for_event(fila_eventos, &evento);
+
+        if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+            return false;
+        }
+        else if(evento.type == ALLEGRO_EVENT_KEY_CHAR) {
+            if(evento.keyboard.keycode == ALLEGRO_KEY_ENTER && !apelido.empty()) {
+                if(registrar_jogador(apelido)) {
+                    apelido_saida = apelido;
+                    return true;
+                }
+            }
+            else if(evento.keyboard.keycode == ALLEGRO_KEY_BACKSPACE && !apelido.empty()) {
+                apelido.pop_back();
+            }
+            else if(evento.keyboard.unichar >= 32 && evento.keyboard.unichar <= 126) {
+                if(apelido.size() < 15) {
+                    apelido += (char)evento.keyboard.unichar;
+                }
+            }
+        }
+
+        // Renderização
+        al_clear_to_color(al_map_rgb(0, 0, 50));
+        al_draw_text(fonte, al_map_rgb(255, 255, 255), 
+                    al_get_display_width(display)/2, 
+                    al_get_display_height(display)/3, 
+                    ALLEGRO_ALIGN_CENTER, 
+                    "Digite seu apelido (ENTER para confirmar):");
+        
+        al_draw_text(fonte, al_map_rgb(255, 255, 0), 
+                    al_get_display_width(display)/2, 
+                    al_get_display_height(display)/2, 
+                    ALLEGRO_ALIGN_CENTER, 
+                    apelido.c_str());
+        
+        al_flip_display();
     }
     return false;
 }
 
-bool Cadastro::cadastrar_jogador(const string& apelido_unico, const string& nome, ALLEGRO_COLOR cor) {
-    if (apelido_existe(apelido_unico)) return false;
-    Jogador novo;
-    novo.apelido_unico = apelido_unico;
-    novo.nome = nome;
-    novo.pontuacao = 0;
-    novo.numero_de_jogos = 0;
-    novo.melhor_pontuacao = 0;
-    novo.cor = cor;
-    novo.cor_r = (int)(cor.r * 255);
-    novo.cor_g = (int)(cor.g * 255);
-    novo.cor_b = (int)(cor.b * 255);
-    novo.avatar = nullptr;
-    jogadores.push_back(novo);
+bool Cadastro::registrar_jogador(const std::string& apelido) {
+    if(apelido.empty()) return false;
+    
+    for(const auto& reg : registros) {
+        if(reg.apelido == apelido) return false;
+    }
+    
+    ALLEGRO_COLOR cor = al_map_rgb(
+        rand() % 256,
+        rand() % 256,
+        rand() % 256
+    );
+    
+    registros.emplace_back(apelido, 0, 0, cor);
+    return salvar_dados();
+}
+
+bool Cadastro::registrar_pontuacao(const std::string& apelido, int pontos_jogo) {
+    auto reg = buscar_registro(apelido);
+    if(!reg) return false;
+    
+    reg->ultima_pontuacao = pontos_jogo;
+    if(pontos_jogo > reg->recorde) {
+        reg->recorde = pontos_jogo;
+    }
+    
+    ordenar_ranking();
+    return salvar_dados();
+}
+
+bool Cadastro::salvar_dados() {
+    std::ofstream arquivo(arquivo_dados);
+    if(!arquivo) return false;
+    
+    for(const auto& reg : registros) {
+        arquivo << reg.apelido << " " 
+                << reg.ultima_pontuacao << " " 
+                << reg.recorde << " "
+                << (int)reg.cor.r << " "
+                << (int)reg.cor.g << " "
+                << (int)reg.cor.b << "\n";
+    }
+    
     return true;
 }
 
-bool Cadastro::trocar_apelido(const string& antigo, const string& novo) {
-    if (apelido_existe(novo)) return false;
-    for (auto& j : jogadores) {
-        if (j.apelido_unico == antigo) {
-            j.apelido_unico = novo;
-            return true;
-        }
+bool Cadastro::carregar_dados() {
+    std::ifstream arquivo(arquivo_dados);
+    if(!arquivo) return false;
+    
+    registros.clear();
+    std::string apelido;
+    int ultima, recorde, r, g, b;
+    
+    while(arquivo >> apelido >> ultima >> recorde >> r >> g >> b) {
+        ALLEGRO_COLOR cor = al_map_rgb(r, g, b);
+        registros.emplace_back(apelido, ultima, recorde, cor);
     }
-    return false;
+    
+    ordenar_ranking();
+    return true;
 }
 
-bool Cadastro::remover_jogador(const string& apelido) {
-    for (auto it = jogadores.begin(); it != jogadores.end(); ++it) {
-        if (it->apelido_unico == apelido) {
-            if (it->avatar) al_destroy_bitmap(it->avatar);
-            jogadores.erase(it);
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Cadastro::carregar_avatar(const string& apelido, const string& caminho) {
-    for (auto& j : jogadores) {
-        if (j.apelido_unico == apelido) {
-            if (j.avatar) al_destroy_bitmap(j.avatar);
-            j.avatar = al_load_bitmap(caminho.c_str());
-            if (j.avatar) {
-                j.caminho_avatar = caminho;
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-bool Cadastro::incrementar_pontuacao(const string& apelido, int pontos) {
-    for (auto& j : jogadores) {
-        if (j.apelido_unico == apelido) {
-            j.pontuacao += pontos;
-            j.numero_de_jogos++;
-            if (j.pontuacao > j.melhor_pontuacao)
-                j.melhor_pontuacao = j.pontuacao;
-            return true;
-        }
-    }
-    return false;
-}
-
-void Cadastro::resetar_estatisticas(const string& apelido) {
-    for (auto& j : jogadores) {
-        if (j.apelido_unico == apelido) {
-            j.pontuacao = 0;
-            j.numero_de_jogos = 0;
-            j.melhor_pontuacao = 0;
-        }
+void Cadastro::exibir_ranking(int x, int y, ALLEGRO_DISPLAY* display) const {
+    if(!fonte) return;
+    
+    al_draw_text(fonte, al_map_rgb(255, 215, 0), 
+                x, y, 
+                ALLEGRO_ALIGN_CENTER, 
+                "TOP 5 JOGADORES");
+    
+    y += 40;
+    for(int i = 0; i < std::min(5, (int)registros.size()); ++i) {
+        const auto& reg = registros[i];
+        std::string texto = std::to_string(i+1) + ". " + reg.apelido + ": " + std::to_string(reg.recorde);
+        
+        al_draw_text(fonte, reg.cor, 
+                    x, y, 
+                    ALLEGRO_ALIGN_CENTER, 
+                    texto.c_str());
+        y += 30;
     }
 }
 
-const Jogador* Cadastro::buscar_jogador(const string& apelido) const {
-    for (const auto& j : jogadores) {
-        if (j.apelido_unico == apelido)
-            return &j;
+RegistroJogador* Cadastro::buscar_registro(const std::string& apelido) {
+    for(auto& reg : registros) {
+        if(reg.apelido == apelido) {
+            return &reg;
+        }
     }
     return nullptr;
 }
 
-const vector<Jogador>& Cadastro::obter_ranking() const {
-    return jogadores;
-}
-
-const Jogador* Cadastro::jogador_com_maior_pontuacao() const {
-    if (jogadores.empty()) return nullptr;
-    return &*max_element(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
-        return a.pontuacao < b.pontuacao;
-    });
-}
-
-void Cadastro::exibir_jogadores(int x, int y, ALLEGRO_DISPLAY* display) const {
-    if (!fonte) return;
-    int offset = 0;
-    for (const auto& j : jogadores) {
-        al_draw_textf(fonte, j.cor, x, y + offset, 0, "%s (%s) - %d pontos", j.nome.c_str(), j.apelido_unico.c_str(), j.pontuacao);
-        offset += 30;
-    }
-}
-
-void Cadastro::ordenar_por_pontuacao() {
-    sort(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
-        return a.pontuacao > b.pontuacao;
-    });
-}
-
-bool Cadastro::salvar_jogadores(const string& arquivo) const {
-    ofstream out(arquivo);
-    if (!out) return false;
-    for (const auto& j : jogadores) {
-        out << j.apelido_unico << ";" << j.nome << ";" << j.pontuacao << ";"
-            << j.numero_de_jogos << ";" << j.melhor_pontuacao << ";"
-            << j.cor_r << ";" << j.cor_g << ";" << j.cor_b << ";"
-            << j.caminho_avatar << "\n";
-    }
-    return true;
-}
-
-bool Cadastro::carregar_jogadores(const string& arquivo) {
-    ifstream in(arquivo);
-    if (!in) return false;
-    jogadores.clear();
-    string linha;
-    while (getline(in, linha)) {
-        Jogador j;
-        replace(linha.begin(), linha.end(), ';', ' ');
-        stringstream iss(linha);
-        iss >> j.apelido_unico >> j.nome >> j.pontuacao >> j.numero_de_jogos >> j.melhor_pontuacao
-            >> j.cor_r >> j.cor_g >> j.cor_b >> j.caminho_avatar;
-        j.cor = al_map_rgb(j.cor_r, j.cor_g, j.cor_b);
-        j.avatar = j.caminho_avatar.empty() ? nullptr : al_load_bitmap(j.caminho_avatar.c_str());
-        jogadores.push_back(j);
-    }
-    return true;
-}
-
-void Cadastro::definir_fonte(ALLEGRO_FONT* nova_fonte) {
-    fonte = nova_fonte;
+void Cadastro::ordenar_ranking() {
+    std::sort(registros.begin(), registros.end(), 
+        [](const RegistroJogador& a, const RegistroJogador& b) {
+            return a.recorde > b.recorde;
+        });
 }
