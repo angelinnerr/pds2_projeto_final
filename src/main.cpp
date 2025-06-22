@@ -210,11 +210,26 @@ int main() {
                             pontuacaoRegistrada = true;
                         }
 
+                        ALLEGRO_BITMAP* caixa_instrucoes = cadastro.getImagemCaixaInstrucoes();
+                        float caixa_instrucoes_x = 0.0f; 
+                        float caixa_instrucoes_y = 0.0f; 
+                        if (caixa_instrucoes) {
+                            
+                            caixa_instrucoes_x = LARGURA_TELA / 2 - al_get_bitmap_width(caixa_instrucoes) / 2; 
+                            caixa_instrucoes_y = ALTURA_TELA - al_get_bitmap_height(caixa_instrucoes) - 10; 
+                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 85, 0);
+                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 135, 0);
+                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 185, 0);
+                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 313, 0);
+                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 410, 0);
+
+                        }//
+
                         std::string textoPontuacao = apelidoJogador + ": " +
                                                      std::to_string(pontuacao.getScore()) + " pontos";
 
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                     LARGURA_TELA / 2, ALTURA_TELA / 2 - 100,
+                                     LARGURA_TELA / 2, ALTURA_TELA / 2 - 160,
                                      ALLEGRO_ALIGN_CENTER,
                                      textoPontuacao.c_str());
 
@@ -225,24 +240,25 @@ int main() {
                                      LARGURA_TELA / 2, ALTURA_TELA / 2 - 40,
                                      ALLEGRO_ALIGN_CENTER, "GAME OVER");
 
+
                         if (exibirRanking) { 
                             cadastro.exibir_ranking(LARGURA_TELA / 2, ALTURA_TELA / 2 - 90, jogo.getDisplay());
                         } else { 
                             
                             al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                         LARGURA_TELA / 2, ALTURA_TELA / 2 + 30,
+                                         LARGURA_TELA / 2, ALTURA_TELA / 2 - 60,
                                          ALLEGRO_ALIGN_CENTER, "Pressione '1' para ver o Ranking"); //
                         } 
 
 
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                     LARGURA_TELA / 2, ALTURA_TELA / 2 + 120,
+                                     LARGURA_TELA / 2, ALTURA_TELA / 2 + 70,
                                      ALLEGRO_ALIGN_CENTER, "Pressione R para reiniciar");
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                     LARGURA_TELA / 2, ALTURA_TELA - 90,
+                                     LARGURA_TELA / 2, ALTURA_TELA - 180,
                                      ALLEGRO_ALIGN_CENTER, "Pressione ESC para sair");
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                     LARGURA_TELA / 2, ALTURA_TELA - 30,
+                                     LARGURA_TELA / 2, ALTURA_TELA - 130,
                                      ALLEGRO_ALIGN_CENTER, "Pressione C para voltar ao cadastro");             
                     }
 

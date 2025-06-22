@@ -47,6 +47,10 @@ public:
 
     ALLEGRO_BITMAP* imagem_fundo_ranking;
     ALLEGRO_BITMAP* imagem_fundo_ranking2;
+    ALLEGRO_BITMAP* imagem_caixa_instrucoes;
+    ALLEGRO_BITMAP* imagem_botao1;
+
+    ALLEGRO_BITMAP* getImagemCaixaInstrucoes() const;
 };
 
 #endif
