@@ -27,7 +27,7 @@ private:
     void ordenar_ranking();
 
 public:
-    Cadastro(const std::string& arquivo, ALLEGRO_FONT* fonte);
+    Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo);
     
     bool processar_tela_cadastro(ALLEGRO_EVENT_QUEUE* fila_eventos, 
                                 ALLEGRO_DISPLAY* display, 

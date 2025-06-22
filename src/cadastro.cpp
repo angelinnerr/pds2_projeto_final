@@ -6,8 +6,8 @@
 RegistroJogador::RegistroJogador(std::string apelido, int ultima, int recorde, ALLEGRO_COLOR cor) :
     apelido(apelido), ultima_pontuacao(ultima), recorde(recorde), cor(cor) {}
 
-Cadastro::Cadastro(const std::string& arquivo, ALLEGRO_FONT* fonte) :
-    arquivo_dados(arquivo), fonte(fonte) {
+Cadastro::Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo) :
+    fonte(fonte), arquivo_dados(arquivo) {
     carregar_dados();
 }
 

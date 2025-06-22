@@ -36,7 +36,7 @@ int main() {
         return 1;
     }
 
-    Cadastro cadastro("dados_jogadores.dat", fonteCadastro);
+    Cadastro cadastro(fonteCadastro, "dados_jogadores.dat");
     std::string apelidoJogador;
 
     // Tela de Cadastro
@@ -52,7 +52,6 @@ int main() {
     carregar_imagens_tubo(); 
 
     do {
-        float ultimoTuboUltrapassado = -1000; 
         reiniciar = false;
         bool sair = false;
         bool tecla_espaco = false;
