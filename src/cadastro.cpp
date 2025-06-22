@@ -1,4 +1,6 @@
 #include "cadastro.hpp"
+#include "constants.h"
+#include "inicializador.hpp"
 #include <algorithm>
 #include "fundo.hpp"
 #include <fstream>
@@ -10,14 +12,30 @@ RegistroJogador::RegistroJogador(std::string apelido, int ultima, int recorde, A
 Cadastro::Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo) :
     fonte(fonte), arquivo_dados(arquivo), imagem_caixa_texto_1(nullptr), imagem_fundo_ranking(nullptr), imagem_fundo_ranking2(nullptr),imagem_caixa_instrucoes(nullptr),imagem_botao1(nullptr)  {
     carregar_dados();
-    imagem_caixa_texto_1 = al_load_bitmap("assets/apelido.png"); 
-    imag_cadastro = al_load_bitmap("assets/qq.png");
-    imag_caixa = al_load_bitmap("assets/caixaap1.png");
-    imag_iniciar = al_load_bitmap("assets/botaoiniciar.png");
-    imagem_fundo_ranking = al_load_bitmap("assets/jogadoresfinal.png");
-    imagem_fundo_ranking2 = al_load_bitmap("assets/cadfundo.png"); 
-    imagem_caixa_instrucoes = al_load_bitmap("assets/fundotextos.png");
-    imagem_botao1 = al_load_bitmap("assets/n1.png");
+
+    imagem_caixa_texto_1 = al_load_bitmap(MOLDURA_APELIDO); 
+    verificarInicializacao(imagem_caixa_texto_1, "imagem da caixa de texto do cadastro");
+
+    imag_cadastro = al_load_bitmap(PLACA_CADASTRO);
+    verificarInicializacao(imag_cadastro, "imagem da placa do cadastro");
+
+    imag_caixa = al_load_bitmap(CAIXA_CADASTRO);
+    verificarInicializacao(imag_caixa, "imagem da caixa do cadastro");
+
+    imag_iniciar = al_load_bitmap(BOTAO_INICIAR);
+    verificarInicializacao(imag_iniciar, "imagem iniciar");
+
+    imagem_fundo_ranking = al_load_bitmap(MOLDURA_RANKING);
+    verificarInicializacao(imagem_fundo_ranking, "imagem de fundo do ranking");
+
+    imagem_fundo_ranking2 = al_load_bitmap(FUNDO_CADASTRO); 
+    verificarInicializacao(imagem_fundo_ranking2, "imagem 2 do fundo do ranking");
+
+    imagem_caixa_instrucoes = al_load_bitmap(FUNDO_TEXTOS);
+    verificarInicializacao(imagem_caixa_instrucoes, "imagem da caixa de instruções");
+
+    imagem_botao1 = al_load_bitmap(NUMERO_UM);
+    verificarInicializacao(imagem_botao1, "imagem do botão 1");
 }
 
 bool Cadastro::processar_tela_cadastro(ALLEGRO_EVENT_QUEUE* fila_eventos, 

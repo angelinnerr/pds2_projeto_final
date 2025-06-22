@@ -6,16 +6,16 @@
 #include "constants.h"
 #include "excecoes.hpp"
 
+void verificarInicializacao(bool condicao, const std::string& descricao) {
+    if (!condicao) {
+        throw ErroDeInicializacao("Não foi possível inicializar " + descricao);
+    }
+}
+
 Jogo::Jogo() {}
 
 Jogo::~Jogo() {
     finalizar();
-}
-
-void Jogo::verificarInicializacao(bool condicao, const std::string& descricao) {
-    if (!condicao) {
-        throw ErroDeInicializacao("Não foi possível inicializar " + descricao);
-    }
 }
 
 void Jogo::inicializar() {
@@ -40,16 +40,16 @@ void Jogo::inicializar() {
     timer = al_create_timer(1.0 / 50);
     verificarInicializacao(timer, "timer");
 
-    fonte = al_load_ttf_font("assets/minfont.ttf", 32, 0);
+    fonte = al_load_ttf_font(FONTE_BASE, 32, 0);
     verificarInicializacao(fonte, "fonte principal");
 
-    fonte2 = al_load_ttf_font("assets/game_over.ttf", 150, 0);
+    fonte2 = al_load_ttf_font(FONTE_GAME_OVER, 150, 0);
     verificarInicializacao(fonte2, "fonte de game over");
 
-    sombra_fonte2 = al_load_ttf_font("assets/game_over.ttf", 155, 0);
+    sombra_fonte2 = al_load_ttf_font(FONTE_GAME_OVER, 155, 0);
     verificarInicializacao(sombra_fonte2, "sombra da fonte de game over");
 
-    musica_tema = al_load_sample("assets/musicatema.ogg");
+    musica_tema = al_load_sample(MUSICA);
     verificarInicializacao(musica_tema, "música tema");
 
     inst_musica_tema = al_create_sample_instance(musica_tema);

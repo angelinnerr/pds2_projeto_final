@@ -1,15 +1,18 @@
-#include "tubo.hpp"
-#include "constants.h"
 #include <allegro5/allegro_image.h>
 #include <cstdlib>
 #include <cstdio>
+
+#include "tubo.hpp"
+#include "constants.h"
+#include "inicializador.hpp"
 
 ALLEGRO_BITMAP* Tubo::imagem_cima = nullptr;
 ALLEGRO_BITMAP* Tubo::imagem_baixo = nullptr;
 
 void carregar_imagens_tubo() {
-    Tubo::imagem_cima = al_load_bitmap("assets/cimaori.png");
+    Tubo::imagem_cima = al_load_bitmap(TUBO_CIMA);
     Tubo::imagem_baixo = al_load_bitmap(TUBO_BAIXO);
+    verificarInicializacao(Tubo::imagem_cima && Tubo::imagem_baixo, "imagem do tubo");
 }
 
 void destruir_imagens_tubo() {

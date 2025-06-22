@@ -10,6 +10,8 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 
+void verificarInicializacao(bool condicao, const std::string& descricao);
+
 class Jogo {
 public:
     Jogo();
@@ -28,7 +30,6 @@ public:
     ALLEGRO_SAMPLE_INSTANCE* getMusicaTema() const;
 
 private:
-    void verificarInicializacao(bool condicao, const std::string& descricao);
 
     ALLEGRO_DISPLAY* tela = nullptr;
     ALLEGRO_EVENT_QUEUE* fila_eventos = nullptr;

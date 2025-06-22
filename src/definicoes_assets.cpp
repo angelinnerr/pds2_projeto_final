@@ -7,8 +7,8 @@ COMO CONSTANTES PARA FACILITAR ALTERAÇÕES
 
 // ------------------ tubos -----------------------
 
-const char* const TUBO_BAIXO = "assets/tubo_baixo";
-const char* const TUBO_CIMA = "assets/tubo_cima";
+const char* const TUBO_BAIXO = "assets/tubo_baixo.png";
+const char* const TUBO_CIMA = "assets/tubo_cima.png";
 
 // ------------------ fundo ------------------------
 
@@ -21,11 +21,27 @@ const char* const PLACA_CADASTRO = "assets/placa_cadastro.png";
 const char* const MOLDURA_APELIDO = "assets/moldura_apelido.png";
 const char* const BOTAO_INICIAR = "assets/botaoiniciar.png";
 const char* const QUADRO_CAD = "assets/quadro_cad.png";
+const char* const CAIXA_CADASTRO = "assets/caixa_cadastro.png";
+const char* const MOLDURA_RANKING = "assets/moldura_ranking.png";
+const char* const FUNDO_TEXTOS = "assets/fundotextos.png";
+
+const char* const NUMERO_UM = "assets/n1o.png";
+const char* const NUMERO_DOIS = "assets/n2o.png";
+const char* const NUMERO_TRES = "assets/n3o.png";
 
 // -------------- pássaro ----------------------------
 
-const char* const IMAGEM_BIRD = "assets/bird";
+const char* const IMAGEM_BIRD = "assets/bird.png";
 
 // ---------------- música -----------------------------
 
 const char* const MUSICA = "assets/musicatema.ogg";
+
+// ------------ dados dos jogadores ------------------
+
+const char* const DADOS_JOGADORES = "dados_jogadores.dat";
+
+// --------------- fontes ------------------------
+
+const char* const FONTE_GAME_OVER = "assets/game_over.ttf";
+const char* const FONTE_BASE = "assets/fonte_base.ttf";

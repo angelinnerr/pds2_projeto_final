@@ -31,7 +31,7 @@ int main() {
         return 1;
     }
 
-    ALLEGRO_FONT* fonteCadastro = al_load_ttf_font("assets/minfont.ttf", 24, 0);
+    ALLEGRO_FONT* fonteCadastro = al_load_ttf_font(FONTE_BASE, 24, 0); 
     if (!fonteCadastro) {
         al_show_native_message_box(jogo.getDisplay(), "Erro", "Falha ao carregar fonte",
                                  "Não foi possível carregar a fonte do cadastro",
@@ -40,7 +40,7 @@ int main() {
         return 1;
     }
 
-    Cadastro cadastro(fonteCadastro, "dados_jogadores.dat");
+    Cadastro cadastro(fonteCadastro, DADOS_JOGADORES);
     std::string apelidoJogador;
 
     Fundo fundo;
@@ -77,16 +77,11 @@ int main() {
 
         EstadoDoJogo estado_atual = INICIO;
 
-        const int NUM_TUBOS = 3;
-        const int ESPACO_HORIZONTAL_ENTRE_TUBOS = 350;
-
         Tubo tubos[NUM_TUBOS] = {
             Tubo(LARGURA_TELA),
             Tubo(LARGURA_TELA + 100 + ESPACO_HORIZONTAL_ENTRE_TUBOS),
             Tubo(LARGURA_TELA + 100 + 2 * ESPACO_HORIZONTAL_ENTRE_TUBOS)
         };
-        Tubo tubos[NUM_TUBOS] = { Tubo(LARGURA_TELA + VALOR_TESTE), Tubo(LARGURA_TELA + 700), Tubo(LARGURA_TELA + 1000) };
-        tubos[0].altura_abertura = ALTURA_TELA / 2;
 
         Jogador jogador;
         Pontos pontuacao;

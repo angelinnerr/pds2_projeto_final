@@ -14,8 +14,8 @@ ALLEGRO_FONT* Pontos::sombra_game_over = nullptr;
 Pontos::Pontos() {
     this->score = 0;
     if (!fonte_score or !sombra_fonte) {
-        fonte_score = al_load_ttf_font("assets/game_over.ttf", 180, 0);
-        sombra_fonte = al_load_ttf_font("assets/game_over.ttf", 190, 0);
+        fonte_score = al_load_ttf_font(FONTE_GAME_OVER, 180, 0);
+        sombra_fonte = al_load_ttf_font(FONTE_GAME_OVER, 190, 0);
         if (!fonte_score or !sombra_fonte) {
             std::cerr << "Não foi possível carregar fonte do score" << std::endl;
         }

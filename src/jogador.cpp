@@ -7,7 +7,7 @@ Jogador::Jogador() { // construtor
     y = ALTURA_TELA / 2;
     velocidade_y = 0;
 
-    imagem = al_load_bitmap("assets/flapyk.png");
+    imagem = al_load_bitmap(IMAGEM_BIRD);
     frame_atual = 0;
     tempo_frame = 0;
 }

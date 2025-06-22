@@ -1,13 +1,16 @@
-#include "fundo.hpp"
-#include "constants.h"
 #include <allegro5/allegro.h>
 #include <string>
 #include <allegro5/allegro_image.h>
 
+#include "fundo.hpp"
+#include "constants.h"
+#include "inicializador.hpp"
+
 using namespace std;
 
 Fundo::Fundo() {
-    imagem = al_load_bitmap("assets/fundoori2.png");
+    imagem = al_load_bitmap(FUNDO_JOGO);
+    verificarInicializacao(imagem, "imagem do fundo");
     posicao_x = 0;
 }
 
@@ -31,5 +34,6 @@ void Fundo::carregar_imagem(const string& caminho_imagem) {
         al_destroy_bitmap(imagem);
     }
     imagem = al_load_bitmap(caminho_imagem.c_str());
+    verificarInicializacao(imagem, "imagem do fundo");
     posicao_x = 0; 
 }
