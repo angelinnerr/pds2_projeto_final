@@ -40,6 +40,8 @@ extern const char* const NUMERO_UM;
 extern const char* const NUMERO_DOIS;
 extern const char* const NUMERO_TRES;
 
+const int TAMANHO_FONTE_CAD = 24;
+
 // -------------- pássaro ----------------------------
 
 extern const char* const IMAGEM_BIRD;
@@ -48,10 +50,13 @@ extern const char* const IMAGEM_BIRD;
 
 extern const char* const MUSICA; 
 
-// ----------- fontes -----------------
+// ----------- fontes ----------------------------
 
 extern const char* const FONTE_GAME_OVER;
 extern const char* const FONTE_BASE;
+
+//---------- definições de exibição -------------
+
 
 
 

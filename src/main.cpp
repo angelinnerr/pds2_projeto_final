@@ -31,7 +31,7 @@ int main() {
         return 1;
     }
 
-    ALLEGRO_FONT* fonteCadastro = al_load_ttf_font(FONTE_BASE, 24, 0); 
+    ALLEGRO_FONT* fonteCadastro = al_load_ttf_font(FONTE_BASE, TAMANHO_FONTE_CAD, 0); 
     if (!fonteCadastro) {
         al_show_native_message_box(jogo.getDisplay(), "Erro", "Falha ao carregar fonte",
                                  "Não foi possível carregar a fonte do cadastro",
@@ -188,6 +188,21 @@ int main() {
                             cadastro.salvar_dados();
                             pontuacaoRegistrada = true;
                         }
+
+                        ALLEGRO_BITMAP* caixa_instrucoes = cadastro.getImagemCaixaInstrucoes();
+                        float caixa_instrucoes_x = 0.0f; 
+                        float caixa_instrucoes_y = 0.0f; 
+                        if (caixa_instrucoes) {
+                            
+                            caixa_instrucoes_x = LARGURA_TELA / 2 - al_get_bitmap_width(caixa_instrucoes) / 2; 
+                            caixa_instrucoes_y = ALTURA_TELA - al_get_bitmap_height(caixa_instrucoes) - 10; 
+                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 85, 0);
+                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 135, 0);
+                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 185, 0);
+                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 313, 0);
+                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 410, 0);
+
+                        }//
 
                         std::string textoPontuacao = apelidoJogador + ": " + std::to_string(pontuacao.getScore()) + " pontos";
 

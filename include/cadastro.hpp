@@ -51,6 +51,8 @@ public:
     ALLEGRO_BITMAP* imagem_botao1;
 
     ALLEGRO_BITMAP* getImagemCaixaInstrucoes() const;
+
+    
 };
 
 #endif
