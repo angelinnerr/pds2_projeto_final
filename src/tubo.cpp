@@ -50,3 +50,6 @@ bool Tubo::colide(int jogador_x, int jogador_y, int jogador_largura, int jogador
             return true;
         }
     }
+    
+    return false;
+}
