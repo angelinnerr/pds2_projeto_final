@@ -1,7 +1,10 @@
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
+#include <string>
 #include <allegro5/allegro_native_dialog.h>
+#include <allegro5/allegro_font.h> 
+#include <allegro5/allegro_ttf.h> 
 
 #include "inicializador.hpp"
 #include "excecoes.hpp"
@@ -28,12 +31,11 @@ int main() {
         return 1;
     }
 
-    // Sistema de Cadastro
     ALLEGRO_FONT* fonteCadastro = al_load_ttf_font("assets/minfont.ttf", 24, 0);
     if (!fonteCadastro) {
         al_show_native_message_box(jogo.getDisplay(), "Erro", "Falha ao carregar fonte",
-                                   "Não foi possível carregar a fonte do cadastro",
-                                   nullptr, ALLEGRO_MESSAGEBOX_ERROR);
+                                 "Não foi possível carregar a fonte do cadastro",
+                                 nullptr, ALLEGRO_MESSAGEBOX_ERROR);
         jogo.finalizar();
         return 1;
     }
@@ -41,11 +43,8 @@ int main() {
     Cadastro cadastro(fonteCadastro, "dados_jogadores.dat");
     std::string apelidoJogador;
 
-    // Tela de Cadastro
-
     Fundo fundo;
-
-    fundo.carregar_imagem("assets/telainicial.png"); 
+    fundo.carregar_imagem("assets/telainicial.png");
 
     bool cadastroOK = cadastro.processar_tela_cadastro(jogo.getFilaEventos(), jogo.getDisplay(), apelidoJogador, fundo);
     if (!cadastroOK) {
@@ -54,17 +53,15 @@ int main() {
         return 0;
     }
 
-    fundo.carregar_imagem("assets/fundoori2.png"); 
-    carregar_imagens_tubo(); 
+    fundo.carregar_imagem("assets/fundoori2.png");
+    carregar_imagens_tubo();
 
     do {
-
-
         bool exibirRanking = false;
 
         if (voltar_cadastro) {
-             al_flush_event_queue(jogo.getFilaEventos());
-             bool cadastroOK = cadastro.processar_tela_cadastro(jogo.getFilaEventos(), jogo.getDisplay(), apelidoJogador, fundo);
+            al_flush_event_queue(jogo.getFilaEventos());
+            bool cadastroOK = cadastro.processar_tela_cadastro(jogo.getFilaEventos(), jogo.getDisplay(), apelidoJogador, fundo);
             if (!cadastroOK) {
                 al_destroy_font(fonteCadastro);
                 jogo.finalizar();
@@ -80,8 +77,13 @@ int main() {
         EstadoDoJogo estado_atual = INICIO;
 
         const int NUM_TUBOS = 3;
-        Tubo tubos[NUM_TUBOS] = { Tubo(LARGURA_TELA + 400), Tubo(LARGURA_TELA + 700), Tubo(LARGURA_TELA + 1000) };
-        tubos[0].altura_abertura = ALTURA_TELA / 2;
+        const int ESPACO_HORIZONTAL_ENTRE_TUBOS = 350;
+
+        Tubo tubos[NUM_TUBOS] = {
+            Tubo(LARGURA_TELA),
+            Tubo(LARGURA_TELA + 100 + ESPACO_HORIZONTAL_ENTRE_TUBOS),
+            Tubo(LARGURA_TELA + 100 + 2 * ESPACO_HORIZONTAL_ENTRE_TUBOS)
+        };
 
         Jogador jogador;
         Pontos pontuacao;
@@ -99,39 +101,11 @@ int main() {
                 }
 
                 case ALLEGRO_EVENT_KEY_DOWN: {
-                    if (evento.keyboard.keycode == ALLEGRO_KEY_R) {
-                        if (estado_atual == FIM_DE_JOGO) {
-                            reiniciar = true;
-                            voltar_cadastro = false;
-                            sair = true;
-                        }
-                    }
-
-                    if (evento.keyboard.keycode == ALLEGRO_KEY_C) {
-                       if (estado_atual == FIM_DE_JOGO) {
-                           voltar_cadastro = true;
-                           sair = true;
-                      }
-                    }
-
-                    if (evento.keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
-                        reiniciar = false;
-                        voltar_cadastro = false;
-                        sair = true;
-                    }
-
-                    if (evento.keyboard.keycode == ALLEGRO_KEY_SPACE) {
-                        if (estado_atual == INICIO || estado_atual == JOGANDO) {
-                            tecla_espaco = true;
-                        }
-                    }
-
-                    if (evento.keyboard.keycode == ALLEGRO_KEY_1) {
-                        if (estado_atual == FIM_DE_JOGO) {
-                            exibirRanking = !exibirRanking; 
-                        }
-                    }
-
+                    if (evento.keyboard.keycode == ALLEGRO_KEY_R && estado_atual == FIM_DE_JOGO) { reiniciar = true; voltar_cadastro = false; sair = true; }
+                    if (evento.keyboard.keycode == ALLEGRO_KEY_C && estado_atual == FIM_DE_JOGO) { voltar_cadastro = true; sair = true; }
+                    if (evento.keyboard.keycode == ALLEGRO_KEY_ESCAPE) { reiniciar = false; voltar_cadastro = false; sair = true; }
+                    if (evento.keyboard.keycode == ALLEGRO_KEY_SPACE && (estado_atual == INICIO || estado_atual == JOGANDO)) { tecla_espaco = true; }
+                    if (evento.keyboard.keycode == ALLEGRO_KEY_1 && estado_atual == FIM_DE_JOGO) { exibirRanking = !exibirRanking; }
                     break;
                 }
 
@@ -144,7 +118,6 @@ int main() {
                     fundo.atualizar();
 
                     if (estado_atual == INICIO) {
-                        fundo.atualizar();
                         if (tecla_espaco) {
                             estado_atual = JOGANDO;
                             jogador.pular();
@@ -167,22 +140,35 @@ int main() {
                         if (estado_atual == JOGANDO) {
                             tubos[i].atualizar();
                         }
+                        if (tubos[i].colide(jogador.x + hitbox_x, jogador.y + hitbox_y, hitbox_largura, hitbox_altura)) {
+                            estado_atual = FIM_DE_JOGO;
+                            al_stop_sample_instance(jogo.getMusicaTema());
+                        }
+                    }
+                    
+                    if (estado_atual == JOGANDO) {
+                        for (int i = 0; i < NUM_TUBOS; ++i) {
+                            if (tubos[i].estaForaDaTela()) {
+                                int max_x = 0;
+                                for (int j = 0; j < NUM_TUBOS; ++j) {
+                                    if (tubos[j].x > max_x) {
+                                        max_x = tubos[j].x;
+                                    }
+                                }
+                                tubos[i].resetar(max_x + ESPACO_HORIZONTAL_ENTRE_TUBOS);
+                            }
+                        }
+                    }
 
-                        if (tubos[i].colide(jogador.x + hitbox_x, jogador.y + hitbox_y,
-                                            hitbox_largura, hitbox_altura)) {
+                    if (jogador.y >= ALTURA_TELA - 38 || jogador.y < 0) {
+                        if(estado_atual == JOGANDO) { // Evita parar a música múltiplas vezes
                             estado_atual = FIM_DE_JOGO;
                             al_stop_sample_instance(jogo.getMusicaTema());
                         }
                     }
 
-                    if (jogador.y >= ALTURA_TELA - 38 || jogador.y < 0) {
-                        estado_atual = FIM_DE_JOGO;
-                        al_stop_sample_instance(jogo.getMusicaTema());
-                    }
-
                     tecla_espaco = false;
 
-                    // desenho
                     al_clear_to_color(al_map_rgb(0, 0, 0));
                     fundo.desenhar();
 
@@ -192,74 +178,34 @@ int main() {
 
                     jogador.desenhar();
                     pontuacao.atualizar();
-
+                    
                     if (estado_atual == INICIO) {
-                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                     LARGURA_TELA / 2, ALTURA_TELA / 2 - 50,
-                                     ALLEGRO_ALIGN_CENTER,
-                                     "Pressione espaco para comecar!");
-                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                     LARGURA_TELA / 2, ALTURA_TELA - 100,
-                                     ALLEGRO_ALIGN_CENTER,
-                                     "Pressione ESC para sair");
-
-                    } else if (estado_atual == FIM_DE_JOGO) {
+                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 50, ALLEGRO_ALIGN_CENTER, "Pressione espaco para comecar!");
+                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA - 100, ALLEGRO_ALIGN_CENTER, "Pressione ESC para sair");
+                    } 
+                    else if (estado_atual == FIM_DE_JOGO) {
+                       
                         if (!pontuacaoRegistrada) {
                             cadastro.registrar_pontuacao(apelidoJogador, pontuacao.getScore());
                             cadastro.salvar_dados();
                             pontuacaoRegistrada = true;
                         }
 
-                        ALLEGRO_BITMAP* caixa_instrucoes = cadastro.getImagemCaixaInstrucoes();
-                        float caixa_instrucoes_x = 0.0f; 
-                        float caixa_instrucoes_y = 0.0f; 
-                        if (caixa_instrucoes) {
-                            
-                            caixa_instrucoes_x = LARGURA_TELA / 2 - al_get_bitmap_width(caixa_instrucoes) / 2; 
-                            caixa_instrucoes_y = ALTURA_TELA - al_get_bitmap_height(caixa_instrucoes) - 10; 
-                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 85, 0);
-                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 135, 0);
-                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 185, 0);
-                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 313, 0);
-                            al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 410, 0);
+                        std::string textoPontuacao = apelidoJogador + ": " + std::to_string(pontuacao.getScore()) + " pontos";
 
-                        }//
-
-                        std::string textoPontuacao = apelidoJogador + ": " +
-                                                     std::to_string(pontuacao.getScore()) + " pontos";
-
-                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                     LARGURA_TELA / 2, ALTURA_TELA / 2 - 160,
-                                     ALLEGRO_ALIGN_CENTER,
-                                     textoPontuacao.c_str());
-
-                        al_draw_text(jogo.getFonte2(), al_map_rgb(255, 255, 255),
-                                     LARGURA_TELA / 2, ALTURA_TELA / 2 - 40,
-                                     ALLEGRO_ALIGN_CENTER, "GAME OVER");
-                        al_draw_text(jogo.getSombraFonte2(), al_map_rgb(255, 0, 0),
-                                     LARGURA_TELA / 2, ALTURA_TELA / 2 - 40,
-                                     ALLEGRO_ALIGN_CENTER, "GAME OVER");
-
+                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 160, ALLEGRO_ALIGN_CENTER, textoPontuacao.c_str());
+                        al_draw_text(jogo.getFonte2(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 40, ALLEGRO_ALIGN_CENTER, "GAME OVER");
+                        al_draw_text(jogo.getSombraFonte2(), al_map_rgb(255, 0, 0), LARGURA_TELA / 2, ALTURA_TELA / 2 - 40, ALLEGRO_ALIGN_CENTER, "GAME OVER");
 
                         if (exibirRanking) { 
                             cadastro.exibir_ranking(LARGURA_TELA / 2, ALTURA_TELA / 2 - 90, jogo.getDisplay());
                         } else { 
-                            
-                            al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                         LARGURA_TELA / 2, ALTURA_TELA / 2 - 60,
-                                         ALLEGRO_ALIGN_CENTER, "Pressione '1' para ver o Ranking"); //
+                            al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 60, ALLEGRO_ALIGN_CENTER, "Pressione '1' para ver o Ranking");
                         } 
 
-
-                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                     LARGURA_TELA / 2, ALTURA_TELA / 2 + 70,
-                                     ALLEGRO_ALIGN_CENTER, "Pressione R para reiniciar");
-                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                     LARGURA_TELA / 2, ALTURA_TELA - 180,
-                                     ALLEGRO_ALIGN_CENTER, "Pressione ESC para sair");
-                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
-                                     LARGURA_TELA / 2, ALTURA_TELA - 130,
-                                     ALLEGRO_ALIGN_CENTER, "Pressione C para voltar ao cadastro");             
+                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 + 70, ALLEGRO_ALIGN_CENTER, "Pressione R para reiniciar");
+                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA - 180, ALLEGRO_ALIGN_CENTER, "Pressione ESC para sair");
+                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA - 130, ALLEGRO_ALIGN_CENTER, "Pressione C para voltar ao cadastro");
                     }
 
                     al_flip_display();
@@ -269,6 +215,7 @@ int main() {
         }
     } while (reiniciar || voltar_cadastro);
 
+    destruir_imagens_tubo();
     al_destroy_font(fonteCadastro);
     jogo.finalizar();
     return 0;
