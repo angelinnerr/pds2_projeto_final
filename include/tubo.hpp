@@ -15,6 +15,8 @@ public:
     void atualizar();
     void desenhar();
     bool colide(int jogador_x, int jogador_y, int jogador_largura, int jogador_altura);
+    bool estaForaDaTela();
+    void resetar(int nova_posicao_x);
 };
 
 void carregar_imagens_tubo();

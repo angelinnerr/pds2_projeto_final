@@ -24,17 +24,21 @@ Tubo::Tubo(int posicao_x) {
 
 void Tubo::atualizar() {
     this->x -= VELOCIDADE_TUBO;
-    if (this->x + LARGURA_TUBO < 0) {
-        this->x = LARGURA_TELA;
-        this->altura_abertura = rand() % (ALTURA_TELA - ESPACO_ENTRE_TUBOS - 150) + 75;
-    }
+}
+
+bool Tubo::estaForaDaTela() {
+    return (this->x + LARGURA_TUBO < 0);
+}
+
+void Tubo::resetar(int nova_posicao_x) {
+    this->x = nova_posicao_x;
+    this->altura_abertura = rand() % (ALTURA_TELA - ESPACO_ENTRE_TUBOS - 150) + 75;
 }
 
 void Tubo::desenhar() {
-        al_draw_bitmap(imagem_cima, this->x, this->altura_abertura - ALTURA_TUBO, 0);
-        al_draw_bitmap(imagem_baixo, this->x, this->altura_abertura + ESPACO_ENTRE_TUBOS, 0);
+    al_draw_bitmap(imagem_cima, this->x, this->altura_abertura - ALTURA_TUBO, 0);
+    al_draw_bitmap(imagem_baixo, this->x, this->altura_abertura + ESPACO_ENTRE_TUBOS, 0);
 }
-
 
 bool Tubo::colide(int jogador_x, int jogador_y, int jogador_largura, int jogador_altura) {
     if (jogador_x + jogador_largura > this->x && jogador_x < this->x + LARGURA_TUBO) {
