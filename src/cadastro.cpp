@@ -63,9 +63,12 @@ bool Cadastro::processar_tela_cadastro(ALLEGRO_EVENT_QUEUE* fila_eventos,
 bool Cadastro::registrar_jogador(const std::string& apelido) {
     if(apelido.empty()) return false;
     
-    for(const auto& reg : registros) {
-        if(reg.apelido == apelido) return false;
+    //  se a pessoa já está cadastrada
+    RegistroJogador* reg = buscar_registro(apelido);
+    if (reg != nullptr) {
+        return true; // Jogador já existe, não cria de novo.
     }
+      
     
     ALLEGRO_COLOR cor = al_map_rgb(
         rand() % 256,
