@@ -1,2 +1,2 @@
-src/*.o 
+*.o 
 dados_jogadores.dat
