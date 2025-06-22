@@ -18,6 +18,8 @@ int main() {
     srand(time(NULL));
 
     Jogo jogo;
+    bool reiniciar = false;
+    bool voltar_cadastro = false;
 
     try {
         jogo.inicializar();
@@ -53,12 +55,20 @@ int main() {
     }
 
     fundo.carregar_imagem("assets/fundoori2.png"); 
-
-    bool reiniciar = false;
-
     carregar_imagens_tubo(); 
 
     do {
+
+        if (voltar_cadastro) {
+             al_flush_event_queue(jogo.getFilaEventos());
+             bool cadastroOK = cadastro.processar_tela_cadastro(jogo.getFilaEventos(), jogo.getDisplay(), apelidoJogador, fundo);
+            if (!cadastroOK) {
+                al_destroy_font(fonteCadastro);
+                jogo.finalizar();
+                return 0;
+            }
+        }
+
         reiniciar = false;
         bool sair = false;
         bool tecla_espaco = false;
@@ -89,12 +99,21 @@ int main() {
                     if (evento.keyboard.keycode == ALLEGRO_KEY_R) {
                         if (estado_atual == FIM_DE_JOGO) {
                             reiniciar = true;
+                            voltar_cadastro = false;
                             sair = true;
                         }
                     }
 
+                    if (evento.keyboard.keycode == ALLEGRO_KEY_C) {
+                       if (estado_atual == FIM_DE_JOGO) {
+                           voltar_cadastro = true;
+                           sair = true;
+                      }
+                    }
+
                     if (evento.keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
                         reiniciar = false;
+                        voltar_cadastro = false;
                         sair = true;
                     }
 
@@ -168,7 +187,7 @@ int main() {
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
                                      LARGURA_TELA / 2, ALTURA_TELA / 2 - 50,
                                      ALLEGRO_ALIGN_CENTER,
-                                     "Pressione espaço para começar!");
+                                     "Pressione espaco para comecar!");
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
                                      LARGURA_TELA / 2, ALTURA_TELA - 100,
                                      ALLEGRO_ALIGN_CENTER,
@@ -204,6 +223,9 @@ int main() {
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
                                      LARGURA_TELA / 2, ALTURA_TELA - 90,
                                      ALLEGRO_ALIGN_CENTER, "Pressione ESC para sair");
+                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
+                                     LARGURA_TELA / 2, ALTURA_TELA - 30,
+                                     ALLEGRO_ALIGN_CENTER, "Pressione C para voltar ao cadastro");             
                     }
 
                     al_flip_display();
@@ -211,7 +233,7 @@ int main() {
                 }
             }
         }
-    } while (reiniciar);
+    } while (reiniciar || voltar_cadastro);
 
     al_destroy_font(fonteCadastro);
     jogo.finalizar();
