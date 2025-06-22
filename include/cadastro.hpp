@@ -6,6 +6,8 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 
+class Fundo;
+
 class RegistroJogador {
 public:
     std::string apelido;
@@ -31,12 +33,17 @@ public:
     
     bool processar_tela_cadastro(ALLEGRO_EVENT_QUEUE* fila_eventos, 
                                 ALLEGRO_DISPLAY* display, 
-                                std::string& apelido_saida);
+                                std::string& apelido_saida, Fundo& fundo_do_jogo); 
     bool registrar_jogador(const std::string& apelido);
     bool registrar_pontuacao(const std::string& apelido, int pontos_jogo);
     bool salvar_dados();
     bool carregar_dados();
     void exibir_ranking(int x, int y, ALLEGRO_DISPLAY* display) const;
+
+    ALLEGRO_BITMAP* imagem_caixa_texto_1;
+    ALLEGRO_BITMAP* imag_iniciar;
+    ALLEGRO_BITMAP* imag_caixa;
+    ALLEGRO_BITMAP* imag_cadastro;
 };
 
 #endif

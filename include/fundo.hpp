@@ -1,7 +1,10 @@
 #ifndef FUNDO_HPP
 #define FUNDO_HPP
 
+#include <string>
 #include <allegro5/allegro.h>
+
+using namespace std;
 
 class Fundo {
 private:
@@ -13,6 +16,7 @@ public:
     ~Fundo();
     void atualizar();
     void desenhar();
+    void carregar_imagem(const string& caminho_imagem); 
 };
 
 #endif

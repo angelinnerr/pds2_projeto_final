@@ -27,7 +27,7 @@ int main() {
     }
 
     // Sistema de Cadastro
-    ALLEGRO_FONT* fonteCadastro = al_load_ttf_font("assets/font.ttf", 24, 0);
+    ALLEGRO_FONT* fonteCadastro = al_load_ttf_font("assets/minfont.ttf", 24, 0);
     if (!fonteCadastro) {
         al_show_native_message_box(jogo.getDisplay(), "Erro", "Falha ao carregar fonte",
                                    "Não foi possível carregar a fonte do cadastro",
@@ -40,12 +40,19 @@ int main() {
     std::string apelidoJogador;
 
     // Tela de Cadastro
-    bool cadastroOK = cadastro.processar_tela_cadastro(jogo.getFilaEventos(), jogo.getDisplay(), apelidoJogador);
+
+    Fundo fundo;
+
+    fundo.carregar_imagem("assets/telainicial.png"); 
+
+    bool cadastroOK = cadastro.processar_tela_cadastro(jogo.getFilaEventos(), jogo.getDisplay(), apelidoJogador, fundo);
     if (!cadastroOK) {
         al_destroy_font(fonteCadastro);
         jogo.finalizar();
         return 0;
     }
+
+    fundo.carregar_imagem("assets/fundoori2.png"); 
 
     bool reiniciar = false;
 
@@ -63,7 +70,6 @@ int main() {
         Tubo tubos[NUM_TUBOS] = { Tubo(LARGURA_TELA + 400), Tubo(LARGURA_TELA + 700), Tubo(LARGURA_TELA + 1000) };
         tubos[0].altura_abertura = ALTURA_TELA / 2;
 
-        Fundo fundo;
         Jogador jogador;
         Pontos pontuacao;
         pontuacao.reset();
@@ -106,6 +112,8 @@ int main() {
                     int hitbox_x = 8;
                     int hitbox_y = 6;
 
+                    fundo.atualizar();
+
                     if (estado_atual == INICIO) {
                         fundo.atualizar();
                         if (tecla_espaco) {
@@ -118,7 +126,7 @@ int main() {
                             jogador.pular();
                             tecla_espaco = false;
                         }
-                        fundo.atualizar();
+                        
                         jogador.atualizar();
 
                         for (int i = 0; i < NUM_TUBOS; ++i) {

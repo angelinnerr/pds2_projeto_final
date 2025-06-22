@@ -40,7 +40,7 @@ void Jogo::inicializar() {
     timer = al_create_timer(1.0 / 50);
     verificarInicializacao(timer, "timer");
 
-    fonte = al_load_ttf_font("assets/font.ttf", 32, 0);
+    fonte = al_load_ttf_font("assets/minfont.ttf", 32, 0);
     verificarInicializacao(fonte, "fonte principal");
 
     fonte2 = al_load_ttf_font("assets/game_over.ttf", 150, 0);

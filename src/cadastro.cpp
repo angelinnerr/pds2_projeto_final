@@ -1,5 +1,6 @@
 #include "cadastro.hpp"
 #include <algorithm>
+#include "fundo.hpp"
 #include <fstream>
 #include <allegro5/allegro_native_dialog.h>
 
@@ -7,13 +8,17 @@ RegistroJogador::RegistroJogador(std::string apelido, int ultima, int recorde, A
     apelido(apelido), ultima_pontuacao(ultima), recorde(recorde), cor(cor) {}
 
 Cadastro::Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo) :
-    fonte(fonte), arquivo_dados(arquivo) {
+    fonte(fonte), arquivo_dados(arquivo), imagem_caixa_texto_1(nullptr) {
     carregar_dados();
+    imagem_caixa_texto_1 = al_load_bitmap("assets/apelido.png"); 
+    imag_cadastro = al_load_bitmap("assets/qq.png");
+    imag_caixa = al_load_bitmap("assets/caixaap1.png");
+    imag_iniciar = al_load_bitmap("assets/botaoiniciar.png"); 
 }
 
 bool Cadastro::processar_tela_cadastro(ALLEGRO_EVENT_QUEUE* fila_eventos, 
                                      ALLEGRO_DISPLAY* display, 
-                                     std::string& apelido_saida) {
+                                     std::string& apelido_saida, Fundo& fundo_do_jogo) {
     std::string apelido;
     bool concluido = false;
     
@@ -43,6 +48,14 @@ bool Cadastro::processar_tela_cadastro(ALLEGRO_EVENT_QUEUE* fila_eventos,
 
         // Renderização
         al_clear_to_color(al_map_rgb(0, 0, 50));
+        fundo_do_jogo.atualizar(); 
+        fundo_do_jogo.desenhar();
+
+        al_draw_bitmap(imagem_caixa_texto_1, 55, 195, 0); 
+        al_draw_bitmap(imag_cadastro, 230, 50, 0);
+        al_draw_bitmap(imag_caixa, 280, 295, 0);
+        al_draw_bitmap(imag_iniciar, 500, 380, 0);
+
         al_draw_text(fonte, al_map_rgb(255, 255, 255), 
                     al_get_display_width(display)/2, 
                     al_get_display_height(display)/3, 
