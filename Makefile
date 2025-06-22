@@ -7,39 +7,40 @@ OBJ_DIR = obj
 
 all: main
 
-main: obj/main.o obj/fundo.o obj/jogador.o obj/tubo.o obj/pontos.o obj/excecoes.o obj/inicializador.o obj/cadastro.o
-	g++ obj/main.o obj/fundo.o obj/jogador.o obj/tubo.o obj/pontos.o obj/excecoes.o obj/inicializador.o obj/cadastro.o -o main `pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5 allegro_dialog-5`
+$(OBJ_DIR)/main.o: $(SRC_DIR)/main.cpp $(INC_DIR)/constants.h $(INC_DIR)/cadastro.hpp
+	mkdir -p obj
+	g++ $(CXXFLAGS) -o $(OBJ_DIR)/main.o -c $(SRC_DIR)/main.cpp
 
-obj/main.o: src/main.cpp include/constants.h include/cadastro.hpp
+$(OBJ_DIR)/fundo.o: $(SRC_DIR)/fundo.cpp $(INC_DIR)/fundo.hpp $(INC_DIR)/constants.h
 	mkdir -p obj
-	g++ $(CXXFLAGS) -o obj/main.o -c src/main.cpp
+	g++ $(CXXFLAGS) -o $(OBJ_DIR)/fundo.o -c $(SRC_DIR)/fundo.cpp  
 
-obj/fundo.o: src/fundo.cpp include/fundo.hpp include/constants.h
+$(OBJ_DIR)/jogador.o: $(SRC_DIR)/jogador.cpp $(INC_DIR)/jogador.hpp $(INC_DIR)/constants.h
 	mkdir -p obj
-	g++ $(CXXFLAGS) -o obj/fundo.o -c src/fundo.cpp
+	g++ $(CXXFLAGS) -o $(OBJ_DIR)/jogador.o -c $(SRC_DIR)/jogador.cpp
 
-obj/jogador.o: src/jogador.cpp include/jogador.hpp include/constants.h
+$(OBJ_DIR)/tubo.o: $(SRC_DIR)/tubo.cpp $(INC_DIR)/tubo.hpp $(INC_DIR)/constants.h
 	mkdir -p obj
-	g++ $(CXXFLAGS) -o obj/jogador.o -c src/jogador.cpp
+	g++ $(CXXFLAGS) -o $(OBJ_DIR)/tubo.o -c $(SRC_DIR)/tubo.cpp
 
-obj/tubo.o: src/tubo.cpp include/tubo.hpp include/constants.h
+$(OBJ_DIR)/pontos.o: $(SRC_DIR)/pontos.cpp $(INC_DIR)/pontos.hpp
 	mkdir -p obj
-	g++ $(CXXFLAGS) -o obj/tubo.o -c src/tubo.cpp
+	g++ $(CXXFLAGS) -o $(OBJ_DIR)/pontos.o -c $(SRC_DIR)/pontos.cpp
 
-obj/pontos.o: src/pontos.cpp include/pontos.hpp
+$(OBJ_DIR)/excecoes.o: $(SRC_DIR)/excecoes.cpp $(INC_DIR)/excecoes.hpp
 	mkdir -p obj
-	g++ $(CXXFLAGS) -o obj/pontos.o -c src/pontos.cpp
+	g++ $(CXXFLAGS) -o $(OBJ_DIR)/excecoes.o -c $(SRC_DIR)/excecoes.cpp
 
-obj/excecoes.o: src/excecoes.cpp include/excecoes.hpp
+$(OBJ_DIR)/inicializador.o: $(SRC_DIR)/inicializador.cpp $(INC_DIR)/inicializador.hpp
 	mkdir -p obj
-	g++ $(CXXFLAGS) -o obj/excecoes.o -c src/excecoes.cpp
+	g++ $(CXXFLAGS) -o $(OBJ_DIR)/inicializador.o -c $(SRC_DIR)/inicializador.cpp
 
-obj/inicializador.o: src/inicializador.cpp include/inicializador.hpp
+$(OBJ_DIR)/cadastro.o: $(SRC_DIR)/cadastro.cpp $(INC_DIR)/cadastro.hpp
 	mkdir -p obj
-	g++ $(CXXFLAGS) -o obj/inicializador.o -c src/inicializador.cpp
-obj/cadastro.o: src/cadastro.cpp include/cadastro.hpp
-	mkdir -p obj
-	g++ $(CXXFLAGS) -o obj/cadastro.o -c src/cadastro.cpp
+	g++ $(CXXFLAGS) -o $(OBJ_DIR)/cadastro.o -c $(SRC_DIR)/cadastro.cpp
+
+main: $(OBJ_DIR)/main.o $(OBJ_DIR)/fundo.o $(OBJ_DIR)/jogador.o $(OBJ_DIR)/tubo.o $(OBJ_DIR)/pontos.o $(OBJ_DIR)/excecoes.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/cadastro.o
+	g++ $(OBJ_DIR)/main.o $(OBJ_DIR)/fundo.o $(OBJ_DIR)/jogador.o $(OBJ_DIR)/tubo.o $(OBJ_DIR)/pontos.o $(OBJ_DIR)/excecoes.o $(OBJ_DIR)/inicializador.o obj/cadastro.o -o main `pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5 allegro_dialog-5`
 
 clean:
 	rm -rf obj main
