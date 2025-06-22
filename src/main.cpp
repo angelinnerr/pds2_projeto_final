@@ -60,7 +60,7 @@ int main() {
         EstadoDoJogo estado_atual = INICIO;
 
         const int NUM_TUBOS = 3;
-        Tubo tubos[NUM_TUBOS] = { Tubo(LARGURA_TELA), Tubo(LARGURA_TELA + 350), Tubo(LARGURA_TELA + 700) };
+        Tubo tubos[NUM_TUBOS] = { Tubo(LARGURA_TELA + 400), Tubo(LARGURA_TELA + 700), Tubo(LARGURA_TELA + 1000) };
         tubos[0].altura_abertura = ALTURA_TELA / 2;
 
         Fundo fundo;

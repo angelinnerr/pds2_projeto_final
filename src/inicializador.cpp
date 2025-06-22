@@ -37,7 +37,7 @@ void Jogo::inicializar() {
     fila_eventos = al_create_event_queue();
     verificarInicializacao(fila_eventos, "fila de eventos");
 
-    timer = al_create_timer(1.0 / 60);
+    timer = al_create_timer(1.0 / 50);
     verificarInicializacao(timer, "timer");
 
     fonte = al_load_ttf_font("assets/font.ttf", 32, 0);
