@@ -95,12 +95,14 @@ bool Cadastro::salvar_dados() {
     if(!arquivo) return false;
     
     for(const auto& reg : registros) {
-        arquivo << reg.apelido << " " 
-                << reg.ultima_pontuacao << " " 
+        unsigned char r, g, b;
+        al_unmap_rgb(reg.cor, &r, &g, &b);
+        arquivo << reg.apelido << " "
+                << reg.ultima_pontuacao << " "
                 << reg.recorde << " "
-                << (int)reg.cor.r << " "
-                << (int)reg.cor.g << " "
-                << (int)reg.cor.b << "\n";
+                << (int)r << " "
+                << (int)g << " "
+                << (int)b << "\n";
     }
     
     return true;
