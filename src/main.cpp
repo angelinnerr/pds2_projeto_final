@@ -20,6 +20,7 @@ int main() {
     Jogo jogo;
     bool reiniciar = false;
     bool voltar_cadastro = false;
+    bool exibirRanking = false;
 
     try {
         jogo.inicializar();
@@ -122,6 +123,13 @@ int main() {
                             tecla_espaco = true;
                         }
                     }
+
+                    if (evento.keyboard.keycode == ALLEGRO_KEY_1) {
+                        if (estado_atual == FIM_DE_JOGO) {
+                            exibirRanking = !exibirRanking; 
+                        }
+                    }
+
                     break;
                 }
 
@@ -215,7 +223,15 @@ int main() {
                                      LARGURA_TELA / 2, ALTURA_TELA / 2 - 40,
                                      ALLEGRO_ALIGN_CENTER, "GAME OVER");
 
-                        cadastro.exibir_ranking(LARGURA_TELA / 2, ALTURA_TELA / 2 + 30, jogo.getDisplay());
+                        if (exibirRanking) { 
+                            cadastro.exibir_ranking(LARGURA_TELA / 2, ALTURA_TELA / 2 + 30, jogo.getDisplay());
+                        } else { 
+                            
+                            al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
+                                         LARGURA_TELA / 2, ALTURA_TELA / 2 + 30,
+                                         ALLEGRO_ALIGN_CENTER, "Pressione '1' para ver o Ranking"); //
+                        } 
+
 
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),
                                      LARGURA_TELA / 2, ALTURA_TELA / 2 + 120,
