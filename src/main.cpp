@@ -45,7 +45,7 @@ int main() {
 
     Fundo fundo;
 
-    fundo.carregar_imagem("assets/telainicial.png"); 
+    fundo.carregar_imagem(FUNDO_CADASTRO); 
 
     bool cadastroOK = cadastro.processar_tela_cadastro(jogo.getFilaEventos(), jogo.getDisplay(), apelidoJogador, fundo);
     if (!cadastroOK) {
@@ -54,7 +54,7 @@ int main() {
         return 0;
     }
 
-    fundo.carregar_imagem("assets/fundoori2.png"); 
+    fundo.carregar_imagem(FUNDO_JOGO); 
     carregar_imagens_tubo(); 
 
     do {
@@ -80,7 +80,7 @@ int main() {
         EstadoDoJogo estado_atual = INICIO;
 
         const int NUM_TUBOS = 3;
-        Tubo tubos[NUM_TUBOS] = { Tubo(LARGURA_TELA + 400), Tubo(LARGURA_TELA + 700), Tubo(LARGURA_TELA + 1000) };
+        Tubo tubos[NUM_TUBOS] = { Tubo(LARGURA_TELA + VALOR_TESTE), Tubo(LARGURA_TELA + 700), Tubo(LARGURA_TELA + 1000) };
         tubos[0].altura_abertura = ALTURA_TELA / 2;
 
         Jogador jogador;

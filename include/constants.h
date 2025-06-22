@@ -4,6 +4,32 @@
 const int LARGURA_TELA = 800;
 const int ALTURA_TELA = 600;
 
+const int VALOR_TESTE = 400;
+
+// ------------------ tubo ----------------
+extern const char* const TUBO_BAIXO;
+extern const char* const TUBO_CIMA;
+
+// ------------------ fundo ------------------------
+
+extern const char* const FUNDO_CADASTRO;
+extern const char* const FUNDO_JOGO;
+
+// ----------- elementos do cadastro ----------------
+
+extern const char* const PLACA_CADASTRO;
+extern const char* const MOLDURA_APELIDO;
+extern const char* const BOTAO_INICIAR;
+extern const char* const QUADRO_CAD;
+
+// -------------- pássaro ----------------------------
+
+extern const char* const IMAGEM_BIRD;
+
+// ---------------- música -----------------------------
+
+extern const char* const MUSICA; 
+
 const int GRAVIDADE = 1;
 const int FORCA_PULO = -12;
 

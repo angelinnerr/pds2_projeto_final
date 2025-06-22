@@ -9,7 +9,7 @@ ALLEGRO_BITMAP* Tubo::imagem_baixo = nullptr;
 
 void carregar_imagens_tubo() {
     Tubo::imagem_cima = al_load_bitmap("assets/cimaori.png");
-    Tubo::imagem_baixo = al_load_bitmap("assets/baixoori.png");
+    Tubo::imagem_baixo = al_load_bitmap(TUBO_BAIXO);
 }
 
 void destruir_imagens_tubo() {
