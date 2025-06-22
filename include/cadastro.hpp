@@ -44,6 +44,9 @@ public:
     ALLEGRO_BITMAP* imag_iniciar;
     ALLEGRO_BITMAP* imag_caixa;
     ALLEGRO_BITMAP* imag_cadastro;
+
+    ALLEGRO_BITMAP* imagem_fundo_ranking;
+    ALLEGRO_BITMAP* imagem_fundo_ranking2;
 };
 
 #endif

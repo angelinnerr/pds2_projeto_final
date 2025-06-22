@@ -20,7 +20,6 @@ int main() {
     Jogo jogo;
     bool reiniciar = false;
     bool voltar_cadastro = false;
-    bool exibirRanking = false;
 
     try {
         jogo.inicializar();
@@ -59,6 +58,9 @@ int main() {
     carregar_imagens_tubo(); 
 
     do {
+
+
+        bool exibirRanking = false;
 
         if (voltar_cadastro) {
              al_flush_event_queue(jogo.getFilaEventos());
@@ -224,7 +226,7 @@ int main() {
                                      ALLEGRO_ALIGN_CENTER, "GAME OVER");
 
                         if (exibirRanking) { 
-                            cadastro.exibir_ranking(LARGURA_TELA / 2, ALTURA_TELA / 2 + 30, jogo.getDisplay());
+                            cadastro.exibir_ranking(LARGURA_TELA / 2, ALTURA_TELA / 2 - 90, jogo.getDisplay());
                         } else { 
                             
                             al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255),

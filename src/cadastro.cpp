@@ -8,12 +8,14 @@ RegistroJogador::RegistroJogador(std::string apelido, int ultima, int recorde, A
     apelido(apelido), ultima_pontuacao(ultima), recorde(recorde), cor(cor) {}
 
 Cadastro::Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo) :
-    fonte(fonte), arquivo_dados(arquivo), imagem_caixa_texto_1(nullptr) {
+    fonte(fonte), arquivo_dados(arquivo), imagem_caixa_texto_1(nullptr), imagem_fundo_ranking(nullptr), imagem_fundo_ranking2(nullptr) {
     carregar_dados();
     imagem_caixa_texto_1 = al_load_bitmap("assets/apelido.png"); 
     imag_cadastro = al_load_bitmap("assets/qq.png");
     imag_caixa = al_load_bitmap("assets/caixaap1.png");
-    imag_iniciar = al_load_bitmap("assets/botaoiniciar.png"); 
+    imag_iniciar = al_load_bitmap("assets/botaoiniciar.png");
+    imagem_fundo_ranking = al_load_bitmap("assets/jogadoresfinal.png");
+    imagem_fundo_ranking2 = al_load_bitmap("assets/cadfundo.png"); 
 }
 
 bool Cadastro::processar_tela_cadastro(ALLEGRO_EVENT_QUEUE* fila_eventos, 
@@ -143,13 +145,26 @@ bool Cadastro::carregar_dados() {
 
 void Cadastro::exibir_ranking(int x, int y, ALLEGRO_DISPLAY* display) const {
     if(!fonte) return;
+
+    if (imagem_fundo_ranking) { //
+    
+        float pos_x_imagem = x - al_get_bitmap_width(imagem_fundo_ranking) / 2; 
+        float pos_y_imagem = y - 30; 
+
+        al_draw_bitmap(imagem_fundo_ranking2, pos_x_imagem - 210 , pos_y_imagem - 170, 0);
+
+        al_draw_bitmap(imagem_fundo_ranking, pos_x_imagem, pos_y_imagem, 0); 
+
+        al_draw_bitmap(imag_caixa, pos_x_imagem + 45 , pos_y_imagem + 25, 0);
+
+    }
     
     al_draw_text(fonte, al_map_rgb(255, 215, 0), 
                 x, y, 
                 ALLEGRO_ALIGN_CENTER, 
                 "TOP 5 JOGADORES");
     
-    y += 40;
+    y += 55;
     for(int i = 0; i < std::min(5, (int)registros.size()); ++i) {
         const auto& reg = registros[i];
         std::string texto = std::to_string(i+1) + ". " + reg.apelido + ": " + std::to_string(reg.recorde);
@@ -158,7 +173,7 @@ void Cadastro::exibir_ranking(int x, int y, ALLEGRO_DISPLAY* display) const {
                     x, y, 
                     ALLEGRO_ALIGN_CENTER, 
                     texto.c_str());
-        y += 30;
+        y += 25;
     }
 }
 
