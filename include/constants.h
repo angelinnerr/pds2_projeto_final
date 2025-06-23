@@ -13,6 +13,8 @@ extern const char* const DADOS_JOGADORES;
 // ------------------ tubo ----------------
 extern const char* const TUBO_BAIXO;
 extern const char* const TUBO_CIMA;
+extern const char* const TUBO_COLORIDO_BAIXO;
+extern const char* const TUBO_COLORIDO_CIMA;
 const int NUM_TUBOS = 3;
 const int ESPACO_HORIZONTAL_ENTRE_TUBOS = 350;
 const int ESPACO_ENTRE_TUBOS = 200;
@@ -24,6 +26,8 @@ const int VELOCIDADE_TUBO = 2;
 
 extern const char* const FUNDO_CADASTRO;
 extern const char* const FUNDO_JOGO;
+extern const char* const FUNDO_ESPIRAL;
+
 const int VELOCIDADE_FUNDO = 2;
 
 // ----------- elementos do cadastro ----------------
@@ -48,7 +52,7 @@ extern const char* const IMAGEM_BIRD;
 
 // ---------------- música -----------------------------
 
-extern const char* const MUSICA; 
+extern const char* const MUSICA;
 
 // ----------- fontes ----------------------------
 

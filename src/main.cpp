@@ -55,7 +55,8 @@ int main() {
     }
 
     fundo.carregar_imagem(FUNDO_JOGO); 
-    carregar_imagens_tubo(); 
+    carregar_imagens_tubo();
+    carregar_tubo_colorido(); 
 
     do {
         bool exibirRanking = false;
@@ -71,9 +72,11 @@ int main() {
         }
 
         reiniciar = false;
+        Tubo::set_usar_imagens_coloridas(false);
         bool sair = false;
         bool tecla_espaco = false;
         bool pontuacaoRegistrada = false;
+        bool fase_colorida = false;
 
         EstadoDoJogo estado_atual = INICIO;
 
@@ -132,6 +135,23 @@ int main() {
                         for (int i = 0; i < NUM_TUBOS; ++i) {
                             pontuacao.verificar(jogador.x, tubos[i].x);
                         }
+
+                        int score = pontuacao.getScore();
+                        int duracao_ciclo = 10;
+                        int inicio_fase_colorida = 5;
+                        int fim_fase_colorida = 10;
+                        int posicao_no_ciclo = score % duracao_ciclo;
+
+                        bool deve_ativar_cor = (score > 0 && posicao_no_ciclo >= inicio_fase_colorida && posicao_no_ciclo <= fim_fase_colorida);
+
+                        Tubo::set_usar_imagens_coloridas(deve_ativar_cor);
+
+                        if (deve_ativar_cor && !fase_colorida) {
+                            fase_colorida = true;
+                         }
+                         else if (!deve_ativar_cor && fase_colorida) {
+                                  fase_colorida = false;
+                         }
                     }
 
                     for (int i = 0; i < NUM_TUBOS; ++i) {
@@ -181,6 +201,7 @@ int main() {
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 50, ALLEGRO_ALIGN_CENTER, "Pressione espaco para comecar!");
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA - 100, ALLEGRO_ALIGN_CENTER, "Pressione ESC para sair");
                     } 
+
                     else if (estado_atual == FIM_DE_JOGO) {
                        
                         if (!pontuacaoRegistrada) {
@@ -189,9 +210,20 @@ int main() {
                             pontuacaoRegistrada = true;
                         }
 
-                        ALLEGRO_BITMAP* caixa_instrucoes = cadastro.getImagemCaixaInstrucoes();
-                        float caixa_instrucoes_x = 0.0f; 
-                        float caixa_instrucoes_y = 0.0f; 
+                        std::string textoPontuacao = apelidoJogador + ": " + std::to_string(pontuacao.getScore()) + " pontos";
+
+                        al_draw_text(jogo.getFonte2(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 40, ALLEGRO_ALIGN_CENTER, "GAME OVER");
+                        al_draw_text(jogo.getSombraFonte2(), al_map_rgb(255, 0, 0), LARGURA_TELA / 2, ALTURA_TELA / 2 - 40, ALLEGRO_ALIGN_CENTER, "GAME OVER");
+
+                        if (exibirRanking) { 
+                            cadastro.exibir_ranking(LARGURA_TELA / 2, ALTURA_TELA / 2 - 90, jogo.getDisplay());
+                        } 
+                        else { 
+
+                            ALLEGRO_BITMAP* caixa_instrucoes = cadastro.getImagemCaixaInstrucoes();
+                            float caixa_instrucoes_x = 0.0f; 
+                            float caixa_instrucoes_y = 0.0f; 
+
                         if (caixa_instrucoes) {
                             
                             caixa_instrucoes_x = LARGURA_TELA / 2 - al_get_bitmap_width(caixa_instrucoes) / 2; 
@@ -201,24 +233,17 @@ int main() {
                             al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 185, 0);
                             al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 313, 0);
                             al_draw_bitmap(caixa_instrucoes, caixa_instrucoes_x - 10, caixa_instrucoes_y - 410, 0);
+                            al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 160, ALLEGRO_ALIGN_CENTER, textoPontuacao.c_str());
 
-                        }//
+                        }
 
-                        std::string textoPontuacao = apelidoJogador + ": " + std::to_string(pontuacao.getScore()) + " pontos";
+                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 60, ALLEGRO_ALIGN_CENTER, "Pressione '1' para ver o Ranking");
+                    }
+                        float desce_y = exibirRanking ? 90 : 0;
 
-                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 160, ALLEGRO_ALIGN_CENTER, textoPontuacao.c_str());
-                        al_draw_text(jogo.getFonte2(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 40, ALLEGRO_ALIGN_CENTER, "GAME OVER");
-                        al_draw_text(jogo.getSombraFonte2(), al_map_rgb(255, 0, 0), LARGURA_TELA / 2, ALTURA_TELA / 2 - 40, ALLEGRO_ALIGN_CENTER, "GAME OVER");
-
-                        if (exibirRanking) { 
-                            cadastro.exibir_ranking(LARGURA_TELA / 2, ALTURA_TELA / 2 - 90, jogo.getDisplay());
-                        } else { 
-                            al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 60, ALLEGRO_ALIGN_CENTER, "Pressione '1' para ver o Ranking");
-                        } 
-
-                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 + 70, ALLEGRO_ALIGN_CENTER, "Pressione R para reiniciar");
-                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA - 180, ALLEGRO_ALIGN_CENTER, "Pressione ESC para sair");
-                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA - 130, ALLEGRO_ALIGN_CENTER, "Pressione C para voltar ao cadastro");
+                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 + 70 + desce_y, ALLEGRO_ALIGN_CENTER, "Pressione R para reiniciar");
+                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA - 180 + desce_y, ALLEGRO_ALIGN_CENTER, "Pressione ESC para sair");
+                        al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA - 130 +desce_y, ALLEGRO_ALIGN_CENTER, "Pressione C para voltar ao cadastro");
                     }
 
                     al_flip_display();

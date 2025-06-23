@@ -11,6 +11,12 @@ public:
     static ALLEGRO_BITMAP* imagem_cima;
     static ALLEGRO_BITMAP* imagem_baixo;
 
+    static ALLEGRO_BITMAP* tubo_colorido_cima;
+    static ALLEGRO_BITMAP* tubo_colorido_baixo;
+
+    static bool usar_tubo_colorido;
+    static void set_usar_imagens_coloridas(bool usar);
+
     Tubo(int posicao_x);
     void atualizar();
     void desenhar();
@@ -20,6 +26,7 @@ public:
 };
 
 void carregar_imagens_tubo();
+void carregar_tubo_colorido();
 void destruir_imagens_tubo();
 
 #endif

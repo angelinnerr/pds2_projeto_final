@@ -38,6 +38,7 @@ private:
     ALLEGRO_FONT* fonte2 = nullptr;
     ALLEGRO_FONT* sombra_fonte2 = nullptr;
     ALLEGRO_SAMPLE* musica_tema = nullptr;
+    ALLEGRO_SAMPLE* musica_transicao = nullptr;
     ALLEGRO_SAMPLE_INSTANCE* inst_musica_tema = nullptr;
 };
 

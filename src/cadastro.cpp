@@ -28,7 +28,7 @@ Cadastro::Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo) :
     imagem_fundo_ranking = al_load_bitmap(MOLDURA_RANKING);
     verificarInicializacao(imagem_fundo_ranking, "imagem de fundo do ranking");
 
-    imagem_fundo_ranking2 = al_load_bitmap(FUNDO_CADASTRO); 
+    imagem_fundo_ranking2 = al_load_bitmap(QUADRO_CAD); 
     verificarInicializacao(imagem_fundo_ranking2, "imagem 2 do fundo do ranking");
 
     imagem_caixa_instrucoes = al_load_bitmap(FUNDO_TEXTOS);
@@ -215,4 +215,15 @@ void Cadastro::ordenar_ranking() {
 
 ALLEGRO_BITMAP* Cadastro::getImagemCaixaInstrucoes() const {
     return imagem_caixa_instrucoes; // para imagens das caixas dos textos
+}
+
+Cadastro::~Cadastro() {
+    if (imagem_caixa_texto_1) al_destroy_bitmap(imagem_caixa_texto_1);
+    if (imag_cadastro) al_destroy_bitmap(imag_cadastro);
+    if (imag_caixa) al_destroy_bitmap(imag_caixa);
+    if (imag_iniciar) al_destroy_bitmap(imag_iniciar);
+    if (imagem_fundo_ranking) al_destroy_bitmap(imagem_fundo_ranking);
+    if (imagem_fundo_ranking2) al_destroy_bitmap(imagem_fundo_ranking2);
+    if (imagem_caixa_instrucoes) al_destroy_bitmap(imagem_caixa_instrucoes);
+    if (imagem_botao1) al_destroy_bitmap(imagem_botao1);
 }

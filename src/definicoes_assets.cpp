@@ -10,11 +10,14 @@ PARA NÃO HAVER MÚLTIPLAS DECLARAÇÕES
 
 const char* const TUBO_BAIXO = "assets/tubo_baixo.png";
 const char* const TUBO_CIMA = "assets/tubo_cima.png";
+const char* const TUBO_COLORIDO_BAIXO = "assets/canoarcoirisb.png";
+const char* const TUBO_COLORIDO_CIMA = "assets/canoarcoirisc.png";
 
 // ------------------ fundo ------------------------
 
 const char* const FUNDO_CADASTRO = "assets/fundo_cadastro.png";
 const char* const FUNDO_JOGO = "assets/fundo_jogo.png";
+const char* const FUNDO_ESPIRAL = "assets/psyoriginal.png";
 
 // ----------- elementos do cadastro ----------------
 

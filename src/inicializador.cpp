@@ -29,7 +29,7 @@ void Jogo::inicializar() {
     verificarInicializacao(al_init_primitives_addon(), "addon de primitivas");
     verificarInicializacao(al_install_audio(), "áudio");
     verificarInicializacao(al_init_acodec_addon(), "addon acodec");
-    al_reserve_samples(1);
+    al_reserve_samples(2);
 
     tela = al_create_display(LARGURA_TELA, ALTURA_TELA);
     verificarInicializacao(tela, "display");
@@ -71,8 +71,9 @@ void Jogo::finalizar() {
     if (fonte2) al_destroy_font(fonte2);
     if (fonte) al_destroy_font(fonte);
     if (timer) al_destroy_timer(timer);
-    if (fila_eventos) al_destroy_event_queue(fila_eventos);
     if (tela) al_destroy_display(tela);
+    if (fila_eventos) al_destroy_event_queue(fila_eventos);
+    
 
     tela = nullptr;
     fila_eventos = nullptr;
@@ -91,3 +92,4 @@ ALLEGRO_FONT* Jogo::getFonte() const { return fonte; }
 ALLEGRO_FONT* Jogo::getFonte2() const { return fonte2; }
 ALLEGRO_FONT* Jogo::getSombraFonte2() const { return sombra_fonte2; }
 ALLEGRO_SAMPLE_INSTANCE* Jogo::getMusicaTema() const { return inst_musica_tema; }
+
