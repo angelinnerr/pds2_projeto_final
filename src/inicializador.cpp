@@ -29,7 +29,7 @@ void Jogo::inicializar() {
     verificarInicializacao(al_init_primitives_addon(), "addon de primitivas");
     verificarInicializacao(al_install_audio(), "áudio");
     verificarInicializacao(al_init_acodec_addon(), "addon acodec");
-    al_reserve_samples(2);
+    al_reserve_samples(16);
 
     tela = al_create_display(LARGURA_TELA, ALTURA_TELA);
     verificarInicializacao(tela, "display");
@@ -51,11 +51,18 @@ void Jogo::inicializar() {
 
     musica_tema = al_load_sample(MUSICA);
     verificarInicializacao(musica_tema, "música tema");
+    musica_transicao = al_load_sample(MUSICA_TRANSICAO);
+    verificarInicializacao(musica_transicao, "música transicao");
 
     inst_musica_tema = al_create_sample_instance(musica_tema);
     al_attach_sample_instance_to_mixer(inst_musica_tema, al_get_default_mixer());
     al_set_sample_instance_playmode(inst_musica_tema, ALLEGRO_PLAYMODE_LOOP);
     al_set_sample_instance_gain(inst_musica_tema, 0.8);
+
+    inst_musica_transicao = al_create_sample_instance(musica_transicao);
+    al_attach_sample_instance_to_mixer(inst_musica_transicao, al_get_default_mixer());
+    al_set_sample_instance_playmode(inst_musica_transicao, ALLEGRO_PLAYMODE_LOOP);
+    al_set_sample_instance_gain(inst_musica_transicao, 0.8);
 
     al_register_event_source(fila_eventos, al_get_display_event_source(tela));
     al_register_event_source(fila_eventos, al_get_timer_event_source(timer));
@@ -67,6 +74,8 @@ void Jogo::inicializar() {
 void Jogo::finalizar() {
     if (inst_musica_tema) al_destroy_sample_instance(inst_musica_tema);
     if (musica_tema) al_destroy_sample(musica_tema);
+    if (inst_musica_transicao) al_destroy_sample_instance(inst_musica_transicao);
+    if (musica_transicao) al_destroy_sample(musica_transicao);
     if (sombra_fonte2) al_destroy_font(sombra_fonte2);
     if (fonte2) al_destroy_font(fonte2);
     if (fonte) al_destroy_font(fonte);
@@ -83,6 +92,8 @@ void Jogo::finalizar() {
     sombra_fonte2 = nullptr;
     musica_tema = nullptr;
     inst_musica_tema = nullptr;
+    musica_transicao = nullptr;
+    inst_musica_transicao = nullptr;
 }
 
 ALLEGRO_DISPLAY* Jogo::getDisplay() const { return tela; }
@@ -92,4 +103,5 @@ ALLEGRO_FONT* Jogo::getFonte() const { return fonte; }
 ALLEGRO_FONT* Jogo::getFonte2() const { return fonte2; }
 ALLEGRO_FONT* Jogo::getSombraFonte2() const { return sombra_fonte2; }
 ALLEGRO_SAMPLE_INSTANCE* Jogo::getMusicaTema() const { return inst_musica_tema; }
+ALLEGRO_SAMPLE_INSTANCE* Jogo::getMusicaTransicao() const { return inst_musica_transicao; }
 

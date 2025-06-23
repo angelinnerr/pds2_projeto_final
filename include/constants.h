@@ -57,6 +57,7 @@ extern const char* const IMAGEM_BIRD;
 // ---------------- música -----------------------------
 
 extern const char* const MUSICA;
+extern const char* const MUSICA_TRANSICAO;
 
 // ----------- fontes ----------------------------
 

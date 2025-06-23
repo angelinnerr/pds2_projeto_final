@@ -29,6 +29,9 @@ int main() {
     int overlay_frame_atual = 0;
     int overlay_tempo_frame = 0;
      // pras espirais do ciclo do tubo colorido
+    
+    bool musica_fase_colorida = false;
+    bool musica_tema_baixa = false; //controla as musicas
 
     try {
         jogo.inicializar();
@@ -90,6 +93,13 @@ int main() {
         bool tecla_espaco = false;
         bool pontuacaoRegistrada = false;
         bool fase_colorida = false;
+
+        musica_fase_colorida = false; //reseta o comportamento das musicas a cada loop
+        musica_tema_baixa = false;
+
+        al_stop_sample_instance(jogo.getMusicaTransicao());
+        al_set_sample_instance_gain(jogo.getMusicaTema(), 0.8); // Garante que as musicas vao tocar corretamente
+
 
         overlay_frame_atual = 0;
         overlay_tempo_frame = 0; 
@@ -170,11 +180,34 @@ int main() {
                                 overlay_frame_atual = (overlay_frame_atual + 1) % overlay_frames_espiral.size();
                                 overlay_tempo_frame = 0;
                             }
-                         } else {
+                            
+                            if (!musica_fase_colorida) {
+                                al_play_sample_instance(jogo.getMusicaTransicao());
+                                musica_fase_colorida = true;
+
+                                if (!musica_tema_baixa) {
+                                    al_set_sample_instance_gain(jogo.getMusicaTema(),0.0); //abaixa o volume da musica principal
+                                    musica_tema_baixa = true;
+                               }
+                            }
+
+                         } 
+                         else {
                             fase_colorida = false; 
                             overlay_frame_atual = 0; 
                             overlay_tempo_frame = 0;
-                         }
+                            
+                            if (musica_fase_colorida) {
+                            al_stop_sample_instance(jogo.getMusicaTransicao());
+
+                            if (musica_tema_baixa) {
+                                al_set_sample_instance_gain(jogo.getMusicaTema(), 0.8); // volta ao volume normal
+                                musica_tema_baixa = false;
+                            }
+
+                            musica_fase_colorida = false;
+                          }
+                       }  
                     }
 
                     for (int i = 0; i < NUM_TUBOS; ++i) {
@@ -184,6 +217,7 @@ int main() {
                         if (tubos[i].colide(jogador.x + hitbox_x, jogador.y + hitbox_y, hitbox_largura, hitbox_altura)) {
                             estado_atual = FIM_DE_JOGO;
                             al_stop_sample_instance(jogo.getMusicaTema());
+                            al_stop_sample_instance(jogo.getMusicaTransicao());
                         }
                     }
                     
@@ -205,6 +239,7 @@ int main() {
                         if(estado_atual == JOGANDO) { // Evita parar a música múltiplas vezes
                             estado_atual = FIM_DE_JOGO;
                             al_stop_sample_instance(jogo.getMusicaTema());
+                            al_stop_sample_instance(jogo.getMusicaTransicao());
                         }
                     }
 

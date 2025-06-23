@@ -28,6 +28,7 @@ public:
     ALLEGRO_FONT* getFonte2() const;
     ALLEGRO_FONT* getSombraFonte2() const;
     ALLEGRO_SAMPLE_INSTANCE* getMusicaTema() const;
+    ALLEGRO_SAMPLE_INSTANCE* getMusicaTransicao() const;
 
 private:
 
@@ -40,6 +41,7 @@ private:
     ALLEGRO_SAMPLE* musica_tema = nullptr;
     ALLEGRO_SAMPLE* musica_transicao = nullptr;
     ALLEGRO_SAMPLE_INSTANCE* inst_musica_tema = nullptr;
+    ALLEGRO_SAMPLE_INSTANCE* inst_musica_transicao= nullptr;
 };
 
 #endif

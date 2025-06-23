@@ -44,6 +44,7 @@ const char* const IMAGEM_BIRD = "assets/bird.png";
 // ---------------- música -----------------------------
 
 const char* const MUSICA = "assets/musicatema.ogg";
+const char* const MUSICA_TRANSICAO = "assets/transitionsong.ogg";
 
 // ------------ dados dos jogadores ------------------
 
