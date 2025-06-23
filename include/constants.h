@@ -30,6 +30,10 @@ extern const char* const FUNDO_ESPIRAL;
 
 const int VELOCIDADE_FUNDO = 2;
 
+extern const char* const FUNDO_ESPIRAL_FRAME_1;
+extern const char* const FUNDO_ESPIRAL_FRAME_2;
+extern const char* const FUNDO_ESPIRAL_FRAME_3;
+
 // ----------- elementos do cadastro ----------------
 
 extern const char* const PLACA_CADASTRO;

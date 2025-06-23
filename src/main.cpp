@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include <vector>
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_font.h> 
 #include <allegro5/allegro_ttf.h> 
@@ -23,6 +24,11 @@ int main() {
     Jogo jogo;
     bool reiniciar = false;
     bool voltar_cadastro = false;
+
+    std::vector<ALLEGRO_BITMAP*> overlay_frames_espiral;
+    int overlay_frame_atual = 0;
+    int overlay_tempo_frame = 0;
+     // pras espirais do ciclo do tubo colorido
 
     try {
         jogo.inicializar();
@@ -58,6 +64,13 @@ int main() {
     carregar_imagens_tubo();
     carregar_tubo_colorido(); 
 
+    overlay_frames_espiral.push_back(al_load_bitmap(FUNDO_ESPIRAL_FRAME_1));
+    verificarInicializacao(overlay_frames_espiral.back(), "frame 1 da espiral");
+    overlay_frames_espiral.push_back(al_load_bitmap(FUNDO_ESPIRAL_FRAME_2));
+    verificarInicializacao(overlay_frames_espiral.back(), "frame 2 da espiral");
+    overlay_frames_espiral.push_back(al_load_bitmap(FUNDO_ESPIRAL_FRAME_3));
+    verificarInicializacao(overlay_frames_espiral.back(), "frame 3 da espiral");
+
     do {
         bool exibirRanking = false;
 
@@ -77,6 +90,9 @@ int main() {
         bool tecla_espaco = false;
         bool pontuacaoRegistrada = false;
         bool fase_colorida = false;
+
+        overlay_frame_atual = 0;
+        overlay_tempo_frame = 0; 
 
         EstadoDoJogo estado_atual = INICIO;
 
@@ -137,20 +153,27 @@ int main() {
                         }
 
                         int score = pontuacao.getScore();
-                        int duracao_ciclo = 10;
-                        int inicio_fase_colorida = 5;
-                        int fim_fase_colorida = 10;
+                        int duracao_ciclo = 50;
+                        int inicio_fase_colorida = 20;
+                        int fim_fase_colorida = 30;
                         int posicao_no_ciclo = score % duracao_ciclo;
 
                         bool deve_ativar_cor = (score > 0 && posicao_no_ciclo >= inicio_fase_colorida && posicao_no_ciclo <= fim_fase_colorida);
 
                         Tubo::set_usar_imagens_coloridas(deve_ativar_cor);
 
-                        if (deve_ativar_cor && !fase_colorida) {
-                            fase_colorida = true;
-                         }
-                         else if (!deve_ativar_cor && fase_colorida) {
-                                  fase_colorida = false;
+                        if (deve_ativar_cor) {
+                            fase_colorida = true; 
+
+                            overlay_tempo_frame++;
+                            if (overlay_tempo_frame > 10) { // velocidade dos frames
+                                overlay_frame_atual = (overlay_frame_atual + 1) % overlay_frames_espiral.size();
+                                overlay_tempo_frame = 0;
+                            }
+                         } else {
+                            fase_colorida = false; 
+                            overlay_frame_atual = 0; 
+                            overlay_tempo_frame = 0;
                          }
                     }
 
@@ -196,6 +219,10 @@ int main() {
 
                     jogador.desenhar();
                     pontuacao.atualizar();
+
+                    if (fase_colorida && !overlay_frames_espiral.empty()) {
+                        al_draw_bitmap(overlay_frames_espiral[overlay_frame_atual], 0, 0, 0); 
+                    }
                     
                     if (estado_atual == INICIO) {
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 50, ALLEGRO_ALIGN_CENTER, "Pressione espaco para comecar!");
@@ -255,6 +282,9 @@ int main() {
 
     destruir_imagens_tubo();
     al_destroy_font(fonteCadastro);
+    for (ALLEGRO_BITMAP* frame : overlay_frames_espiral) {
+        if (frame) al_destroy_bitmap(frame);
+    } // destroi as espirais
     jogo.finalizar();
     return 0;
 }

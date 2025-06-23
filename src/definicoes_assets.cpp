@@ -19,6 +19,10 @@ const char* const FUNDO_CADASTRO = "assets/fundo_cadastro.png";
 const char* const FUNDO_JOGO = "assets/fundo_jogo.png";
 const char* const FUNDO_ESPIRAL = "assets/psyoriginal.png";
 
+const char* const FUNDO_ESPIRAL_FRAME_1 = "assets/psyoriginal1.png"; 
+const char* const FUNDO_ESPIRAL_FRAME_2 = "assets/psyoriginal2.png"; 
+const char* const FUNDO_ESPIRAL_FRAME_3 = "assets/psyoriginal3.png";
+
 // ----------- elementos do cadastro ----------------
 
 const char* const PLACA_CADASTRO = "assets/placa_cadastro.png";
