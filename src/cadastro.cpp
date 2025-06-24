@@ -16,7 +16,7 @@ RegistroJogador::RegistroJogador(std::string apelido, int ultima, int recorde, A
 
 //implementacao da classe Cadastro
 Cadastro::Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo, bool carregarImagens) :
-    fonte(fonte), arquivo_dados(arquivo), imagem_caixa_texto_1(nullptr), imagem_fundo_ranking(nullptr), imagem_fundo_ranking2(nullptr),imagem_caixa_instrucoes(nullptr),imagem_botao1(nullptr)  {
+    fonte(fonte), arquivo_dados(arquivo), imagem_caixa_texto_1(nullptr), imag_iniciar(nullptr), imag_caixa(nullptr), imag_cadastro(nullptr), imagem_fundo_ranking(nullptr), imagem_fundo_ranking2(nullptr),imagem_caixa_instrucoes(nullptr) {
     
     //carrega do arquivo os dados dos jogadores cadastrados
     carregar_dados();
@@ -53,9 +53,6 @@ void Cadastro::carregar_imagens() {
 
     imagem_caixa_instrucoes = al_load_bitmap(FUNDO_TEXTOS);
     verificarInicializacao(imagem_caixa_instrucoes, "imagem da caixa de instruções");
-
-    imagem_botao1 = al_load_bitmap(NUMERO_UM);
-    verificarInicializacao(imagem_botao1, "imagem do botão 1");
 }
 
 //processamento da tela do cadastro do jogador
@@ -271,5 +268,4 @@ Cadastro::~Cadastro() {
     if (imagem_fundo_ranking) al_destroy_bitmap(imagem_fundo_ranking);
     if (imagem_fundo_ranking2) al_destroy_bitmap(imagem_fundo_ranking2);
     if (imagem_caixa_instrucoes) al_destroy_bitmap(imagem_caixa_instrucoes);
-    if (imagem_botao1) al_destroy_bitmap(imagem_botao1);
 }

@@ -33,10 +33,6 @@ const char* const CAIXA_CADASTRO = "assets/caixa_cadastro.png";
 const char* const MOLDURA_RANKING = "assets/moldura_ranking.png";
 const char* const FUNDO_TEXTOS = "assets/fundotextos.png";
 
-const char* const NUMERO_UM = "assets/n1o.png";
-const char* const NUMERO_DOIS = "assets/n2o.png";
-const char* const NUMERO_TRES = "assets/n3o.png";
-
 // -------------- pássaro ----------------------------
 
 const char* const IMAGEM_BIRD = "assets/bird.png";
