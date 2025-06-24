@@ -35,10 +35,10 @@ Este projeto é uma implementação em C++ do jogo "Flappy Bird", desenvolvido c
 1. **`Jogo`**:
    - Gerencia a inicialização e finalização da biblioteca Allegro 5, atuando como o "motor" principal e a base para a execução do jogo.
 
-2. **`Cadastro'**:
+2. **`Cadastro`**:
    - Gerencia todo o subsistema de jogadores, incluindo a tela de registro, a persistência de dados em arquivo e a exibição do ranking.
 
-3. **'Jogador`**:
+3. **`Jogador`**:
    - Representa o pássaro controlado pelo usuário, contendo sua lógica de física (pulo, gravidade) e animação.
 
 4. **`Pontos`**:
