@@ -58,8 +58,9 @@ int main() {
         return 1;
     }
 
-    //inicialização da classe cadastro e do apelido único
-    Cadastro cadastro(fonteCadastro, DADOS_JOGADORES);
+    //inicialização da classe cadastro e do apelido único. True indica que é para carregar as imagens ligadas ao cadastro.
+    Cadastro cadastro(fonteCadastro, DADOS_JOGADORES, true);
+    
     std::string apelidoJogador;
 
     //configura o fundo inicial

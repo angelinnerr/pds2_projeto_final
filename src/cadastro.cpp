@@ -1,24 +1,38 @@
 //bibliotecas necessárias para o cadastro
+#include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <allegro5/allegro_native_dialog.h>
+
+#include "fundo.hpp"
 #include "cadastro.hpp"
 #include "constants.h"
 #include "inicializador.hpp"
-#include <algorithm>
-#include "fundo.hpp"
-#include <fstream>
-#include <allegro5/allegro_native_dialog.h>
+#include "excecoes.hpp"
 
 //implementacao da classe RegistroJogador
 RegistroJogador::RegistroJogador(std::string apelido, int ultima, int recorde, ALLEGRO_COLOR cor) :
     apelido(apelido), ultima_pontuacao(ultima), recorde(recorde), cor(cor) {}
 
 //implementacao da classe Cadastro
-Cadastro::Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo) :
+Cadastro::Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo, bool carregarImagens) :
     fonte(fonte), arquivo_dados(arquivo), imagem_caixa_texto_1(nullptr), imagem_fundo_ranking(nullptr), imagem_fundo_ranking2(nullptr),imagem_caixa_instrucoes(nullptr),imagem_botao1(nullptr)  {
     
     //carrega do arquivo os dados dos jogadores cadastrados
     carregar_dados();
 
-    //carrega as imagens necessárias para a interface
+    if (carregarImagens){
+        try{
+            carregar_imagens();
+        }catch (const ErroDeInicializacao& erro) {
+            std::cerr << erro.what() << std::endl;
+            std::cout << "teste" << std::endl;
+        }
+    }
+}
+//carrega as imagens necessárias para a interface
+void Cadastro::carregar_imagens() {
+
     imagem_caixa_texto_1 = al_load_bitmap(MOLDURA_APELIDO); 
     verificarInicializacao(imagem_caixa_texto_1, "imagem da caixa de texto do cadastro");
 

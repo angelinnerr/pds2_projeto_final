@@ -32,7 +32,7 @@ public:
     
     ~Cadastro();
     
-    Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo);
+    Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo, bool carregarImagens);
     
     bool processar_tela_cadastro(ALLEGRO_EVENT_QUEUE* fila_eventos, 
                                 ALLEGRO_DISPLAY* display, 
@@ -42,6 +42,7 @@ public:
     bool salvar_dados();
     bool carregar_dados();
     void exibir_ranking(int x, int y, ALLEGRO_DISPLAY* display) const;
+    void carregar_imagens();
 
     ALLEGRO_BITMAP* imagem_caixa_texto_1;
     ALLEGRO_BITMAP* imag_iniciar;

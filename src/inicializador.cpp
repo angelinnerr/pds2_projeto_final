@@ -1,8 +1,8 @@
-#include "inicializador.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 
+#include "inicializador.hpp"
 #include "constants.h"
 #include "excecoes.hpp"
 
