@@ -17,6 +17,7 @@ public:
     void atualizar();
     void desenhar();
     void carregar_imagem(const string& caminho_imagem); 
+    float getPosicaoX() const ;
 };
 
 #endif

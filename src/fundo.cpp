@@ -37,3 +37,7 @@ void Fundo::carregar_imagem(const string& caminho_imagem) {
     verificarInicializacao(imagem, "imagem do fundo");
     posicao_x = 0; 
 }
+
+float Fundo::getPosicaoX() const{
+    return posicao_x;
+}
