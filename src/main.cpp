@@ -1,4 +1,4 @@
-//bibliotecas necessárias para o jogo funcionar
+//bibliotecas necessarias para o jogo funcionar
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -89,10 +89,10 @@ int main() {
 
     //loop principal que controla o fluxo de reinicialização no jogo e o retorno ao cadastro
     do {
-        //variável para trocar de estado
+        //variavel para trocar de estado
         bool exibirRanking = false;
 
-        //transição do gameover para o cadastro
+        //transicao do gameover para o cadastro
         if (voltar_cadastro) {
             al_flush_event_queue(jogo.getFilaEventos());
             bool cadastroOK = cadastro.processar_tela_cadastro(jogo.getFilaEventos(), jogo.getDisplay(), apelidoJogador, fundo);
@@ -115,11 +115,11 @@ int main() {
         musica_fase_colorida = false; 
         musica_tema_baixa = false;
 
-        //grante que as musicas vao tocar corretamente
+        //garante que as musicas vao tocar corretamente
         al_stop_sample_instance(jogo.getMusicaTransicao());
         al_set_sample_instance_gain(jogo.getMusicaTema(), 0.8); 
 
-        //reseta a animcao em espiral
+        //reseta a animacao em espiral
         overlay_frame_atual = 0;
         overlay_tempo_frame = 0; 
 
@@ -133,7 +133,7 @@ int main() {
             Tubo(LARGURA_TELA + 100 + 2 * ESPACO_HORIZONTAL_ENTRE_TUBOS)
         };
 
-        //inicializa jogador pontuacao
+        //inicializa o jogador e a pontuacao
         Jogador jogador;
         Pontos pontuacao;
         pontuacao.reset();
@@ -178,7 +178,7 @@ int main() {
                     } else if (estado_atual == JOGANDO) {
                         if (tecla_espaco) {
                             jogador.pular(); //pular durante a partida
-                            tecla_espaco = false;  //resete  flag para não dar problema
+                            tecla_espaco = false;  //reseta a flag para não dar problema
                         }
                         
                         jogador.atualizar(); //atualiza a posição do personagem
@@ -315,11 +315,11 @@ int main() {
                         //texto da pontuaacao
                         std::string textoPontuacao = apelidoJogador + ": " + std::to_string(pontuacao.getScore()) + " pontos";
 
-                        //desenah o texto de game over
+                        //desenha o texto de game over
                         al_draw_text(jogo.getFonte2(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 40, ALLEGRO_ALIGN_CENTER, "GAME OVER");
                         al_draw_text(jogo.getSombraFonte2(), al_map_rgb(255, 0, 0), LARGURA_TELA / 2, ALTURA_TELA / 2 - 40, ALLEGRO_ALIGN_CENTER, "GAME OVER");
 
-                        //exibe oranking
+                        //exibe o ranking
                         if (exibirRanking) { 
                             cadastro.exibir_ranking(LARGURA_TELA / 2, ALTURA_TELA / 2 - 90, jogo.getDisplay());
                         } 
@@ -344,7 +344,7 @@ int main() {
 
                         al_draw_text(jogo.getFonte(), al_map_rgb(255, 255, 255), LARGURA_TELA / 2, ALTURA_TELA / 2 - 60, ALLEGRO_ALIGN_CENTER, "Pressione '1' para ver o Ranking");
                     }
-                        //ajusta a posicaoquando o  ranking aparece
+                        //ajusta a posicao quando o ranking aparece
                         float desce_y = exibirRanking ? 90 : 0;
 
                         //desenha as opcoes pos gameover

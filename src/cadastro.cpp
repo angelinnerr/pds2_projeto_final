@@ -187,7 +187,7 @@ bool Cadastro::carregar_dados() {
     return true;
 }
 
-//classe responsael por exibir o ranking na tela
+//classe responsavel por exibir o ranking na tela
 void Cadastro::exibir_ranking(int x, int y, ALLEGRO_DISPLAY* display) const {
     if(!fonte) return;
 
@@ -196,7 +196,7 @@ void Cadastro::exibir_ranking(int x, int y, ALLEGRO_DISPLAY* display) const {
         float pos_x_imagem = x - al_get_bitmap_width(imagem_fundo_ranking) / 2; 
         float pos_y_imagem = y - 30; 
 
-        ///desenha o ranking na tela
+        //desenha o ranking na tela
         al_draw_bitmap(imagem_fundo_ranking2, pos_x_imagem - 210 , pos_y_imagem - 170, 0);
 
         al_draw_bitmap(imagem_fundo_ranking, pos_x_imagem, pos_y_imagem, 0); 
@@ -248,7 +248,7 @@ ALLEGRO_BITMAP* Cadastro::getImagemCaixaInstrucoes() const {
     return imagem_caixa_instrucoes; // para imagens das caixas dos textos
 }
 
-//Destrutor que dá uma limpeza final
+//destrutor que da uma limpeza final
 Cadastro::~Cadastro() {
     if (imagem_caixa_texto_1) al_destroy_bitmap(imagem_caixa_texto_1);
     if (imag_cadastro) al_destroy_bitmap(imag_cadastro);
