@@ -193,7 +193,7 @@ int main() {
                         int score = pontuacao.getScore();
 
                         //variaveis usadas para definir a partir de qual pontuação os tubos coloridos aparecem
-                        int duracao_ciclo = 50;
+                        int duracao_ciclo = 30;
                         int inicio_fase_colorida = 20;
                         int fim_fase_colorida = 30;
                         int posicao_no_ciclo = score % duracao_ciclo;
