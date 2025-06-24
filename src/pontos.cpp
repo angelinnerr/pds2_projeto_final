@@ -1,9 +1,12 @@
-#include "pontos.hpp"
-#include "constants.h"
 #include <iostream> 
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_font.h>
 #include <string>
+
+#include "pontos.hpp"
+#include "constants.h"
+#include "inicializador.hpp"
+#include "excecoes.hpp"
 
 ALLEGRO_FONT* Pontos::fonte_score = nullptr;
 ALLEGRO_FONT* Pontos::sombra_fonte = nullptr;
@@ -11,15 +14,25 @@ ALLEGRO_FONT* Pontos::sombra_fonte = nullptr;
 ALLEGRO_FONT* Pontos::fonte_game_over = nullptr;
 ALLEGRO_FONT* Pontos::sombra_game_over = nullptr;
 
-Pontos::Pontos() {
+Pontos::Pontos(bool deve_carregar_fontes) {
     this->score = 0;
-    if (!fonte_score or !sombra_fonte) {
-        fonte_score = al_load_ttf_font(FONTE_GAME_OVER, 180, 0);
-        sombra_fonte = al_load_ttf_font(FONTE_GAME_OVER, 190, 0);
-        if (!fonte_score or !sombra_fonte) {
-            std::cerr << "Não foi possível carregar fonte do score" << std::endl;
+
+    if(deve_carregar_fontes) {
+        try{
+            carrega_fontes();
+        }catch (const ErroDeInicializacao& erro){
+            std::cerr << erro.what() << std::endl;
+            exit(1);
         }
     }
+}
+
+void Pontos::carrega_fontes() {
+    fonte_score = al_load_ttf_font(FONTE_GAME_OVER, 180, 0);
+    verificarInicializacao(fonte_score, "fonte do score em pontos");
+
+    sombra_fonte = al_load_ttf_font(FONTE_GAME_OVER, 190, 0);
+    verificarInicializacao(sombra_fonte, "fonte de sombra em pontos");  
 }
 
 void Pontos::verificar(int posicaoJogador, int posicaoTubo){

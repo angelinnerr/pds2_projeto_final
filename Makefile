@@ -78,7 +78,6 @@ teste_cadastro: $(OBJ_DIR)/testes_cadastro.o $(OBJ_DIR)/cadastro.o $(OBJ_DIR)/ex
 	`pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5 allegro_dialog-5`
 	./$(BIN_DIR)/teste_cadastro
 
-<<<<<<< HEAD
 # teste da classe 'Jogador'
 $(OBJ_DIR)/testes_jogador.o: $(TESTS_DIR)/testes_jogador.cpp $(INC_DIR)/doctest.h $(INC_DIR)/jogador.hpp 
 	mkdir -p $(BIN_DIR)
@@ -98,5 +97,16 @@ $(OBJ_DIR)/testes_fundo.o: $(TESTS_DIR)/testes_fundo.cpp $(INC_DIR)/doctest.h $(
 teste_fundo: $(OBJ_DIR)/testes_fundo.o $(OBJ_DIR)/fundo.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/definicoes_assets.o $(OBJ_DIR)/excecoes.o
 	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/teste_fundo \
 	$(OBJ_DIR)/testes_fundo.o $(OBJ_DIR)/fundo.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/definicoes_assets.o $(OBJ_DIR)/excecoes.o \
-	pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5 allegro_dialog-5
+	`pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5 allegro_dialog-5`
 	./$(BIN_DIR)/teste_fundo
+
+# teste da classe 'Pontos'
+$(OBJ_DIR)/testes_pontos.o: $(TESTS_DIR)/testes_pontos.cpp $(INC_DIR)/doctest.h $(INC_DIR)/pontos.hpp 
+	mkdir -p $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $(OBJ_DIR)/testes_pontos.o -c $(TESTS_DIR)/testes_pontos.cpp 
+
+teste_pontos: $(OBJ_DIR)/testes_pontos.o $(OBJ_DIR)/pontos.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/definicoes_assets.o $(OBJ_DIR)/excecoes.o
+	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/teste_pontos \
+	$(OBJ_DIR)/testes_pontos.o $(OBJ_DIR)/pontos.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/definicoes_assets.o $(OBJ_DIR)/excecoes.o \
+	`pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5 allegro_dialog-5`
+	./$(BIN_DIR)/teste_pontos

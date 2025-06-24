@@ -26,7 +26,7 @@ Cadastro::Cadastro(ALLEGRO_FONT* fonte, const std::string& arquivo, bool carrega
             carregar_imagens();
         }catch (const ErroDeInicializacao& erro) {
             std::cerr << erro.what() << std::endl;
-            std::cout << "teste" << std::endl;
+            exit(1);
         }
     }
 }

@@ -136,7 +136,7 @@ int main() {
 
         //inicializa o jogador e a pontuacao
         Jogador jogador;
-        Pontos pontuacao;
+        Pontos pontuacao(true); // true indica que é para carregar as fontes da pontuação
         pontuacao.reset();
 
         while (!sair) { //enquanto o jogo não for encerrado

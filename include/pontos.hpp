@@ -8,7 +8,7 @@
 
 class Pontos{
     public:
-        Pontos(); // construtor
+        Pontos(bool carregar_fontes); // construtor
 
         static ALLEGRO_FONT* fonte_score;
         static ALLEGRO_FONT* sombra_fonte;
@@ -19,7 +19,6 @@ class Pontos{
         void carrega_fontes();
         void verificar(int posicaoJogador, int posicaoTubo);
         void atualizar();
-        void game_over();
         void reset();
         int getScore() const; 
 
@@ -27,7 +26,4 @@ class Pontos{
     private:
         int score;
 };
-
-
-
 # endif

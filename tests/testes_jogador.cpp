@@ -1,3 +1,7 @@
+/*
+TESTE EM DOCTEST PARA MÉTODOS DA CLASSE 'Jogador', NO ARQUIVO "jogador.cpp"
+*/
+
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
 #include <allegro5/allegro.h>
