@@ -2,6 +2,7 @@ CXX = g++
 CXXFLAGS = -Wall -std=c++17 -Iinclude `pkg-config --cflags allegro-5 allegro_font-5 allegro_ttf-5 allegro_dialog-5 allegro_image-5 allegro_primitives-5 allegro_audio-5 allegro_acodec-5`
 
 SRC_DIR = src
+TESTS_DIR = tests
 INC_DIR = include
 OBJ_DIR = obj
 
@@ -51,3 +52,18 @@ clean:
 
 copy_assets:
 	@cp -r assets/ bin/
+
+# TESTES:
+
+# teste da classe 'Jogo'
+$(OBJ_DIR)/testes_inicializador.o: $(TESTS_DIR)/testes_inicializador.cpp $(INC_DIR)/doctest.h $(INC_DIR)/inicializador.hpp
+	mkdir -p obj
+	$(CXX) $(CXXFLAGS) -o $(OBJ_DIR)/testes_inicializador.o -c $(TESTS_DIR)/testes_inicializador.cpp
+
+test_inicializador: $(OBJ_DIR)/testes_inicializador.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/excecoes.o $(OBJ_DIR)/definicoes_assets.o
+	$(CXX) $(CXXFLAGS) -o test_inicializador \
+	$(OBJ_DIR)/testes_inicializador.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/excecoes.o $(OBJ_DIR)/definicoes_assets.o \
+	`pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5 allegro_dialog-5`
+
+run_test: test_inicializador
+	./test_inicializador
