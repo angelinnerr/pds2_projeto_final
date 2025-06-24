@@ -8,12 +8,18 @@ Este projeto é uma implementação em C++ do jogo "Flappy Bird", desenvolvido c
 - Loop Principal: Durante a partida, o sistema processa continuamente a entrada do usuário (pulo), atualiza a física dos objetos, verifica colisões e renderiza todos os elementos na tela.
 - Sistema de Ranking: Ao final de cada partida, a pontuação obtida é registrada e pode ser comparada com os recordes de outros jogadores.
 
-### Funcionalidades Extras
-- **Trilha sonora:** Uma trilha sonora autoral toca durante todo o jogo;
-- **Fase Bônus Dinâmica: :** A cada 30 pontos, o jogo ativa uma fase "psicodélica" com duração de 10 tubos. Nela, os tubos se tornam coloridos, uma animação de espiral é sobreposta à tela e a música é alterada, aumentando o desafio e a variedade.
+### Principais Classes
+1. **`Jogo`**:
+   - Gerencia a inicialização e finalização da biblioteca Allegro 5, atuando como o "motor" principal e a base para a execução do jogo.
 
-![Fase bônus](./assets/tela_fasebonus.png)
+2. **`Cadastro`**:
+   - Gerencia todo o subsistema de jogadores, incluindo a tela de registro, a persistência de dados em arquivo e a exibição do ranking.
 
+3. **`Jogador`**:
+   - Representa o pássaro controlado pelo usuário, contendo sua lógica de física (pulo, gravidade) e animação.
+
+4. **`Pontos`**:
+   - Gerencia a lógica de contagem de pontos durante a partida e sua exibição na tela
 ---
 
 ## Estrutura do Projeto
@@ -31,20 +37,12 @@ Este projeto é uma implementação em C++ do jogo "Flappy Bird", desenvolvido c
 └── README.md    # Documentação completa do projeto
 ```
 
-### Principais CLasses
-1. **`Jogo`**:
-   - Gerencia a inicialização e finalização da biblioteca Allegro 5, atuando como o "motor" principal e a base para a execução do jogo.
+### Funcionalidades Extras
+- **Trilha sonora:** Uma trilha sonora autoral toca durante todo o jogo;
+- **Fase Bônus Dinâmica: :** A cada 30 pontos, o jogo ativa uma fase "psicodélica" com duração de 10 tubos. Nela, os tubos se tornam coloridos, uma animação de espiral é sobreposta à tela e a música é alterada, aumentando o desafio e a variedade.
 
-2. **`Cadastro`**:
-   - Gerencia todo o subsistema de jogadores, incluindo a tela de registro, a persistência de dados em arquivo e a exibição do ranking.
+![Fase bônus](./assets/tela_fasebonus.png)
 
-3. **`Jogador`**:
-   - Representa o pássaro controlado pelo usuário, contendo sua lógica de física (pulo, gravidade) e animação.
-
-4. **`Pontos`**:
-   - Gerencia a lógica de contagem de pontos durante a partida e sua exibição na tela
-
----
 
 ## Compilação e Execução
 
