@@ -66,10 +66,30 @@ Este projeto é uma implementação em C++ do jogo "Flappy Bird", desenvolvido c
    ```bash
    ./bin/programa
    ```
-4. Execute os testes:
+4. Execute os testes: 
+   - Teste do cadastro:
    ```bash
-   make tests
-   ./bin/tests
+   make teste_cadastro
+   ```
+   - Teste do fundo:
+   ```bash
+   make teste_fundo
+   ```
+   - Teste do inicializador:
+   ```bash
+   make teste_inicializador
+   ```
+   - Teste do jogador:
+   ```bash
+   make teste_jogador
+   ```
+   - Teste dos pontos:
+   ```bash
+   make teste_pontos
+   ```
+   - Teste do tubo:
+   ```bash
+   make teste_tubo
    ```
 5. Limpe os arquivos gerados: (Boa prática)
    ```bash

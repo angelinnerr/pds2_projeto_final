@@ -46,7 +46,8 @@ $(OBJ_DIR)/definicoes_assets.o: $(SRC_DIR)/definicoes_assets.cpp $(INC_DIR)/cons
 	g++ $(CXXFLAGS) -o $(OBJ_DIR)/definicoes_assets.o -c $(SRC_DIR)/definicoes_assets.cpp
 
 main: $(OBJ_DIR)/main.o $(OBJ_DIR)/fundo.o $(OBJ_DIR)/jogador.o $(OBJ_DIR)/tubo.o $(OBJ_DIR)/pontos.o $(OBJ_DIR)/excecoes.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/cadastro.o $(OBJ_DIR)/definicoes_assets.o
-	g++ $(OBJ_DIR)/main.o $(OBJ_DIR)/fundo.o $(OBJ_DIR)/jogador.o $(OBJ_DIR)/tubo.o $(OBJ_DIR)/pontos.o $(OBJ_DIR)/excecoes.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/cadastro.o $(OBJ_DIR)/definicoes_assets.o -o main `pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5 allegro_dialog-5`
+	mkdir -p $(BIN_DIR)
+	g++ $(OBJ_DIR)/main.o $(OBJ_DIR)/fundo.o $(OBJ_DIR)/jogador.o $(OBJ_DIR)/tubo.o $(OBJ_DIR)/pontos.o $(OBJ_DIR)/excecoes.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/cadastro.o $(OBJ_DIR)/definicoes_assets.o -o ./$(BIN_DIR)/programa `pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5 allegro_dialog-5`
 
 clean:
 	rm -rf obj main
