@@ -28,7 +28,7 @@ Este projeto é uma implementação em C++ do jogo "Flappy Bird", desenvolvido c
 ├── assets/      # Imagens, fontes e arquivos de áudio
 ├── bin/         # Arquivos executáveis
 ├── include/     # Arquivos de cabeçalho (.hpp)
-├── src/         # Código-fonte (.cpp), incluindo o main
+├── src/         # Código-fonte (.cpp)
 ├── tests/       # Arquivos de teste
 ├── CartõesCRC/  # Documentação com os cartões CRC
 ├── obj/         # Arquivos objeto gerados na compilação (.o)
