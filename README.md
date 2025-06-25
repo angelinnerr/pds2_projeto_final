@@ -114,3 +114,10 @@ Este projeto é uma implementação em C++ do jogo "Flappy Bird", desenvolvido c
 3. **Balanceamento da Jogabilidade**: Encontrar as constantes ideais (gravidade, força do pulo, velocidade dos tubos) para criar uma curva de dificuldade divertida e visualmente agradável.
 
 4. **Gerenciamento de memória e recursos com a Allegro**: Lidar com a alocação e liberação manual de recursos da Allegro (bitmaps, fontes, áudio) para evitar vazamentos de memória.
+
+## Trabalho desenvolvido pelos alunos:
+- Angelinne Batista Cardoso;
+- Gabriel dos Santos Nogueira;
+- Giovanna Vieira Souza;
+- Luiza de Paula Costa;
+- Luma Martins Ferreira Guimaraes.
