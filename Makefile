@@ -110,3 +110,14 @@ teste_pontos: $(OBJ_DIR)/testes_pontos.o $(OBJ_DIR)/pontos.o $(OBJ_DIR)/iniciali
 	$(OBJ_DIR)/testes_pontos.o $(OBJ_DIR)/pontos.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/definicoes_assets.o $(OBJ_DIR)/excecoes.o \
 	`pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5 allegro_dialog-5`
 	./$(BIN_DIR)/teste_pontos
+
+# teste da classe 'Tubo'
+$(OBJ_DIR)/testes_tubo.o: $(TESTS_DIR)/testes_tubo.cpp $(INC_DIR)/doctest.h $(INC_DIR)/tubo.hpp 
+	mkdir -p $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $(OBJ_DIR)/testes_tubo.o -c $(TESTS_DIR)/testes_tubo.cpp 
+
+teste_tubo: $(OBJ_DIR)/testes_tubo.o $(OBJ_DIR)/tubo.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/definicoes_assets.o $(OBJ_DIR)/excecoes.o
+	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/teste_tubo \
+	$(OBJ_DIR)/testes_tubo.o $(OBJ_DIR)/tubo.o $(OBJ_DIR)/inicializador.o $(OBJ_DIR)/definicoes_assets.o $(OBJ_DIR)/excecoes.o \
+	`pkg-config --libs allegro-5 allegro_main-5 allegro_audio-5 allegro_image-5 allegro_font-5 allegro_primitives-5 allegro_acodec-5 allegro_ttf-5 allegro_dialog-5`
+	./$(BIN_DIR)/teste_tubo

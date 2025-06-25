@@ -77,9 +77,15 @@ int main() {
 
     //carrega o fundo do jogo,tubos e tubo colorido
     fundo.carregar_imagem(FUNDO_JOGO); 
-    carregar_imagens_tubo();
-    carregar_tubo_colorido(); 
 
+    try{
+        carregar_imagens_tubo();
+        carregar_tubo_colorido(); 
+    }catch (const ErroDeInicializacao& erro) {
+        std::cerr << erro.what() << std::endl;
+        return 1;
+    }
+     
     //carrega os frames da animação de espiral
     overlay_frames_espiral.push_back(al_load_bitmap(FUNDO_ESPIRAL_FRAME_1));
     verificarInicializacao(overlay_frames_espiral.back(), "frame 1 da espiral");

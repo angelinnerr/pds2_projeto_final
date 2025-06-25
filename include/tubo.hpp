@@ -23,6 +23,7 @@ public:
     bool colide(int jogador_x, int jogador_y, int jogador_largura, int jogador_altura);
     bool estaForaDaTela();
     void resetar(int nova_posicao_x);
+    int getAbertura();
 };
 
 void carregar_imagens_tubo();
