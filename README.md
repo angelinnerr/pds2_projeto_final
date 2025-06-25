@@ -120,4 +120,4 @@ Este projeto é uma implementação em C++ do jogo "Flappy Bird", desenvolvido c
 - Gabriel dos Santos Nogueira;
 - Giovanna Vieira Souza;
 - Luiza de Paula Costa;
-- Luma Martins Ferreira Guimaraes.
+- Luma Martins Ferreira Guimarães.
