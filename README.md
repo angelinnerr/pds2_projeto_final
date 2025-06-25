@@ -32,7 +32,7 @@ Este projeto é uma implementação em C++ do jogo "Flappy Bird", desenvolvido c
 ├── tests/       # Arquivos de teste
 ├── CartõesCRC/  # Documentação com os cartões CRC
 ├── obj/         # Arquivos objeto gerados na compilação (.o)
-├── docs/        # Documentação gerada pelo Doxygen
+├── Doxyfile     # Documentação gerada pelo Doxygen
 ├── Makefile     # Script para automação da compilação
 └── README.md    # Documentação completa do projeto
 ```
