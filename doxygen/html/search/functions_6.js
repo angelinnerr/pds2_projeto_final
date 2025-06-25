@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['get_5factive_5fcontexts_0',['get_active_contexts',['../structdoctest_1_1IReporter.html#ad34f2f1954ff43b6e8fe2dc595cec53a',1,'doctest::IReporter']]],
+  ['get_5fnum_5factive_5fcontexts_1',['get_num_active_contexts',['../structdoctest_1_1IReporter.html#a7d520de46d9104c0eeb02375fabad32d',1,'doctest::IReporter']]],
+  ['get_5fnum_5fstringified_5fcontexts_2',['get_num_stringified_contexts',['../structdoctest_1_1IReporter.html#ac8b96fef046edc609a3374a61b84797d',1,'doctest::IReporter']]],
+  ['get_5fstringified_5fcontexts_3',['get_stringified_contexts',['../structdoctest_1_1IReporter.html#a6db31e528efe08c9bc9b4037a2143c3a',1,'doctest::IReporter']]],
+  ['getabertura_4',['getAbertura',['../classTubo.html#a175a49a6b038a7a49891bcabf9deca8e',1,'Tubo']]],
+  ['getcontextoptions_5',['getContextOptions',['../namespacedoctest.html#a13c02a469cfc2264d547fc0fc3a55569',1,'doctest']]],
+  ['getcurrenttestsuite_6',['getCurrentTestSuite',['../namespacedoctest__detail__test__suite__ns.html#a63d04c2e0ba35dff1e33cf0a24ec66c8',1,'doctest_detail_test_suite_ns']]],
+  ['getdisplay_7',['getDisplay',['../classJogo.html#a5af88de135fed60b1c2e528f521f852f',1,'Jogo']]],
+  ['getfilaeventos_8',['getFilaEventos',['../classJogo.html#a8c59bdcc9b0c334d2e8cb1baea0d10c4',1,'Jogo']]],
+  ['getfonte_9',['getFonte',['../classJogo.html#a36a0d958a3072c4bdbd7d16003bf9f92',1,'Jogo']]],
+  ['getfonte2_10',['getFonte2',['../classJogo.html#a83c6fe975817c80ace78ccf981734c62',1,'Jogo']]],
+  ['getimagemcaixainstrucoes_11',['getImagemCaixaInstrucoes',['../classCadastro.html#a2f1b8fe9c7de61294278cd87061baec9',1,'Cadastro']]],
+  ['getmusicatema_12',['getMusicaTema',['../classJogo.html#a190feb126bf0edce8b690463bc2123b9',1,'Jogo']]],
+  ['getmusicatransicao_13',['getMusicaTransicao',['../classJogo.html#a02c4d8afb6ffacb7d2057f97e3a6f4ed',1,'Jogo']]],
+  ['getposicaox_14',['getPosicaoX',['../classFundo.html#a1cc1d9dcdaa3d1a68dc71a53744b5c74',1,'Fundo']]],
+  ['getscore_15',['getScore',['../classPontos.html#ae263181de3ba07ad77e0998c37e61e46',1,'Pontos']]],
+  ['getsombrafonte2_16',['getSombraFonte2',['../classJogo.html#ab0c45b7cc64da812488dd29fb4030b30',1,'Jogo']]],
+  ['gettimer_17',['getTimer',['../classJogo.html#ac52cd94a678bb70d301154c9b860cc88',1,'Jogo']]]
+];

@@ -1,0 +1,53 @@
+\doxysection{inicializador.\+hpp}
+\hypertarget{inicializador_8hpp_source}{}\label{inicializador_8hpp_source}\index{include/inicializador.hpp@{include/inicializador.hpp}}
+\mbox{\hyperlink{inicializador_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SISTEMA\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SISTEMA\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <allegro5/allegro.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_font.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_ttf.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_audio.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_acodec.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_image.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_primitives.h>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{inicializador_8hpp_aedac8e24e66f41ffb3d7d62f69b647cc}{verificarInicializacao}}(\textcolor{keywordtype}{bool}\ condicao,\ \textcolor{keyword}{const}\ std::string\&\ descricao);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classJogo}{Jogo}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classJogo_ada6b127710abe5e25240b09b1a13b502}{Jogo}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classJogo_aefcb010d60d5cd578c97af37f2980cbe}{\string~Jogo}}();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJogo_a284459e212fe7c786d9a5201f1d65b3a}{inicializar}}();}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJogo_afe2882b40f612e05742d56e96d840fda}{finalizar}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ getters}}
+\DoxyCodeLine{00024\ \ \ \ \ ALLEGRO\_DISPLAY*\ \mbox{\hyperlink{classJogo_a5af88de135fed60b1c2e528f521f852f}{getDisplay}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00025\ \ \ \ \ ALLEGRO\_EVENT\_QUEUE*\ \mbox{\hyperlink{classJogo_a8c59bdcc9b0c334d2e8cb1baea0d10c4}{getFilaEventos}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00026\ \ \ \ \ ALLEGRO\_TIMER*\ \mbox{\hyperlink{classJogo_ac52cd94a678bb70d301154c9b860cc88}{getTimer}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{classJogo_a36a0d958a3072c4bdbd7d16003bf9f92}{getFonte}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{classJogo_a83c6fe975817c80ace78ccf981734c62}{getFonte2}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00029\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{classJogo_ab0c45b7cc64da812488dd29fb4030b30}{getSombraFonte2}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ \ \ \ \ ALLEGRO\_SAMPLE\_INSTANCE*\ \mbox{\hyperlink{classJogo_a190feb126bf0edce8b690463bc2123b9}{getMusicaTema}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ \ \ \ \ ALLEGRO\_SAMPLE\_INSTANCE*\ \mbox{\hyperlink{classJogo_a02c4d8afb6ffacb7d2057f97e3a6f4ed}{getMusicaTransicao}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ ALLEGRO\_DISPLAY*\ \mbox{\hyperlink{classJogo_aa4f9c507940a3b9a735145072eb3ae07}{tela}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00036\ \ \ \ \ ALLEGRO\_EVENT\_QUEUE*\ \mbox{\hyperlink{classJogo_aa8c372bcef117034b0d1673811ed555c}{fila\_eventos}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00037\ \ \ \ \ ALLEGRO\_TIMER*\ \mbox{\hyperlink{classJogo_a339aedf7e799590305980bf4ccb6372d}{timer}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00038\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{classJogo_a7589646d47d672b420ff4af942ebeb5a}{fonte}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00039\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{classJogo_a82700b02d73b5fae26d5a7f5da6459c7}{fonte2}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00040\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{classJogo_ac6302eb5aa8bd13e808bc941c6e72580}{sombra\_fonte2}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00041\ \ \ \ \ ALLEGRO\_SAMPLE*\ \mbox{\hyperlink{classJogo_a4bc4803fe35b249261c4baff0628bcee}{musica\_tema}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00042\ \ \ \ \ ALLEGRO\_SAMPLE*\ \mbox{\hyperlink{classJogo_ac727941e7eedcdef7015ee8fe4cafa62}{musica\_transicao}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00043\ \ \ \ \ ALLEGRO\_SAMPLE\_INSTANCE*\ \mbox{\hyperlink{classJogo_a248387821f48d29507cabd489efc7571}{inst\_musica\_tema}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00044\ \ \ \ \ ALLEGRO\_SAMPLE\_INSTANCE*\ \mbox{\hyperlink{classJogo_a68882c3293f876838fc6303f942335f7}{inst\_musica\_transicao}}=\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

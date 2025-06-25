@@ -1,0 +1,153 @@
+\doxysection{Tubo Class Reference}
+\hypertarget{classTubo}{}\label{classTubo}\index{Tubo@{Tubo}}
+
+
+{\ttfamily \#include $<$tubo.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTubo_a547c20f83a8e68668c558806fb1f2a3f}{Tubo}} (int posicao\+\_\+x)
+\item 
+void \mbox{\hyperlink{classTubo_a80eeab7da328855881800146874effc3}{atualizar}} ()
+\item 
+void \mbox{\hyperlink{classTubo_a8a442af8d5b2f1a52c478c29a2a47d0d}{desenhar}} ()
+\item 
+bool \mbox{\hyperlink{classTubo_a70741ce239a9041643608a8dadf6c216}{colide}} (int jogador\+\_\+x, int jogador\+\_\+y, int jogador\+\_\+largura, int jogador\+\_\+altura)
+\item 
+bool \mbox{\hyperlink{classTubo_af06b9fe32fa38d6940fa3ce375a584ad}{esta\+Fora\+Da\+Tela}} ()
+\item 
+void \mbox{\hyperlink{classTubo_a2e0078861e6344d1aa7d5ee83b3abdf0}{resetar}} (int nova\+\_\+posicao\+\_\+x)
+\item 
+int \mbox{\hyperlink{classTubo_a175a49a6b038a7a49891bcabf9deca8e}{get\+Abertura}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classTubo_a06c5265e28373caeb1203d57f03f2b52}{set\+\_\+usar\+\_\+imagens\+\_\+coloridas}} (bool usar)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classTubo_a9905bc925982b93815e8035ba2c6f033}{x}}
+\item 
+int \mbox{\hyperlink{classTubo_a1e64bf176f32a8fc5dfbd22acc512579}{altura\+\_\+abertura}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classTubo_adb12321c3688a3494ea99a08b237e33d}{imagem\+\_\+cima}} = nullptr
+\item 
+static ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classTubo_a1dd7f256827cbfda4d4cb5171f4bba05}{imagem\+\_\+baixo}} = nullptr
+\item 
+static ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classTubo_a3990d634771fa168e866626793de2b85}{tubo\+\_\+colorido\+\_\+cima}} = nullptr
+\item 
+static ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classTubo_abeb628ae5cf60fa818785231d2a7f5d7}{tubo\+\_\+colorido\+\_\+baixo}} = nullptr
+\item 
+static bool \mbox{\hyperlink{classTubo_ab624279085b735cd1f24480791b26885}{usar\+\_\+tubo\+\_\+colorido}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTubo_a547c20f83a8e68668c558806fb1f2a3f}\label{classTubo_a547c20f83a8e68668c558806fb1f2a3f} 
+\index{Tubo@{Tubo}!Tubo@{Tubo}}
+\index{Tubo@{Tubo}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{Tubo()}{Tubo()}}
+{\footnotesize\ttfamily Tubo\+::\+Tubo (\begin{DoxyParamCaption}\item[{int}]{posicao\+\_\+x }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTubo_a80eeab7da328855881800146874effc3}\label{classTubo_a80eeab7da328855881800146874effc3} 
+\index{Tubo@{Tubo}!atualizar@{atualizar}}
+\index{atualizar@{atualizar}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{atualizar()}{atualizar()}}
+{\footnotesize\ttfamily void Tubo\+::atualizar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classTubo_a70741ce239a9041643608a8dadf6c216}\label{classTubo_a70741ce239a9041643608a8dadf6c216} 
+\index{Tubo@{Tubo}!colide@{colide}}
+\index{colide@{colide}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{colide()}{colide()}}
+{\footnotesize\ttfamily bool Tubo\+::colide (\begin{DoxyParamCaption}\item[{int}]{jogador\+\_\+x,  }\item[{int}]{jogador\+\_\+y,  }\item[{int}]{jogador\+\_\+largura,  }\item[{int}]{jogador\+\_\+altura }\end{DoxyParamCaption})}
+
+\Hypertarget{classTubo_a8a442af8d5b2f1a52c478c29a2a47d0d}\label{classTubo_a8a442af8d5b2f1a52c478c29a2a47d0d} 
+\index{Tubo@{Tubo}!desenhar@{desenhar}}
+\index{desenhar@{desenhar}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{desenhar()}{desenhar()}}
+{\footnotesize\ttfamily void Tubo\+::desenhar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classTubo_af06b9fe32fa38d6940fa3ce375a584ad}\label{classTubo_af06b9fe32fa38d6940fa3ce375a584ad} 
+\index{Tubo@{Tubo}!estaForaDaTela@{estaForaDaTela}}
+\index{estaForaDaTela@{estaForaDaTela}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{estaForaDaTela()}{estaForaDaTela()}}
+{\footnotesize\ttfamily bool Tubo\+::esta\+Fora\+Da\+Tela (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classTubo_a175a49a6b038a7a49891bcabf9deca8e}\label{classTubo_a175a49a6b038a7a49891bcabf9deca8e} 
+\index{Tubo@{Tubo}!getAbertura@{getAbertura}}
+\index{getAbertura@{getAbertura}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{getAbertura()}{getAbertura()}}
+{\footnotesize\ttfamily int Tubo\+::get\+Abertura (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classTubo_a2e0078861e6344d1aa7d5ee83b3abdf0}\label{classTubo_a2e0078861e6344d1aa7d5ee83b3abdf0} 
+\index{Tubo@{Tubo}!resetar@{resetar}}
+\index{resetar@{resetar}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{resetar()}{resetar()}}
+{\footnotesize\ttfamily void Tubo\+::resetar (\begin{DoxyParamCaption}\item[{int}]{nova\+\_\+posicao\+\_\+x }\end{DoxyParamCaption})}
+
+\Hypertarget{classTubo_a06c5265e28373caeb1203d57f03f2b52}\label{classTubo_a06c5265e28373caeb1203d57f03f2b52} 
+\index{Tubo@{Tubo}!set\_usar\_imagens\_coloridas@{set\_usar\_imagens\_coloridas}}
+\index{set\_usar\_imagens\_coloridas@{set\_usar\_imagens\_coloridas}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{set\_usar\_imagens\_coloridas()}{set\_usar\_imagens\_coloridas()}}
+{\footnotesize\ttfamily void Tubo\+::set\+\_\+usar\+\_\+imagens\+\_\+coloridas (\begin{DoxyParamCaption}\item[{bool}]{usar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classTubo_a1e64bf176f32a8fc5dfbd22acc512579}\label{classTubo_a1e64bf176f32a8fc5dfbd22acc512579} 
+\index{Tubo@{Tubo}!altura\_abertura@{altura\_abertura}}
+\index{altura\_abertura@{altura\_abertura}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{altura\_abertura}{altura\_abertura}}
+{\footnotesize\ttfamily int Tubo\+::altura\+\_\+abertura}
+
+\Hypertarget{classTubo_a1dd7f256827cbfda4d4cb5171f4bba05}\label{classTubo_a1dd7f256827cbfda4d4cb5171f4bba05} 
+\index{Tubo@{Tubo}!imagem\_baixo@{imagem\_baixo}}
+\index{imagem\_baixo@{imagem\_baixo}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{imagem\_baixo}{imagem\_baixo}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} Tubo\+::imagem\+\_\+baixo = nullptr\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classTubo_adb12321c3688a3494ea99a08b237e33d}\label{classTubo_adb12321c3688a3494ea99a08b237e33d} 
+\index{Tubo@{Tubo}!imagem\_cima@{imagem\_cima}}
+\index{imagem\_cima@{imagem\_cima}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{imagem\_cima}{imagem\_cima}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} Tubo\+::imagem\+\_\+cima = nullptr\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classTubo_abeb628ae5cf60fa818785231d2a7f5d7}\label{classTubo_abeb628ae5cf60fa818785231d2a7f5d7} 
+\index{Tubo@{Tubo}!tubo\_colorido\_baixo@{tubo\_colorido\_baixo}}
+\index{tubo\_colorido\_baixo@{tubo\_colorido\_baixo}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{tubo\_colorido\_baixo}{tubo\_colorido\_baixo}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} Tubo\+::tubo\+\_\+colorido\+\_\+baixo = nullptr\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classTubo_a3990d634771fa168e866626793de2b85}\label{classTubo_a3990d634771fa168e866626793de2b85} 
+\index{Tubo@{Tubo}!tubo\_colorido\_cima@{tubo\_colorido\_cima}}
+\index{tubo\_colorido\_cima@{tubo\_colorido\_cima}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{tubo\_colorido\_cima}{tubo\_colorido\_cima}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} Tubo\+::tubo\+\_\+colorido\+\_\+cima = nullptr\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classTubo_ab624279085b735cd1f24480791b26885}\label{classTubo_ab624279085b735cd1f24480791b26885} 
+\index{Tubo@{Tubo}!usar\_tubo\_colorido@{usar\_tubo\_colorido}}
+\index{usar\_tubo\_colorido@{usar\_tubo\_colorido}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{usar\_tubo\_colorido}{usar\_tubo\_colorido}}
+{\footnotesize\ttfamily bool Tubo\+::usar\+\_\+tubo\+\_\+colorido = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classTubo_a9905bc925982b93815e8035ba2c6f033}\label{classTubo_a9905bc925982b93815e8035ba2c6f033} 
+\index{Tubo@{Tubo}!x@{x}}
+\index{x@{x}!Tubo@{Tubo}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily int Tubo\+::x}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{tubo_8hpp}{tubo.\+hpp}}\item 
+src/\mbox{\hyperlink{tubo_8cpp}{tubo.\+cpp}}\end{DoxyCompactItemize}

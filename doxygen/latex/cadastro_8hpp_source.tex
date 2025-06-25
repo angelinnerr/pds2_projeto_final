@@ -1,0 +1,67 @@
+\doxysection{cadastro.\+hpp}
+\hypertarget{cadastro_8hpp_source}{}\label{cadastro_8hpp_source}\index{include/cadastro.hpp@{include/cadastro.hpp}}
+\mbox{\hyperlink{cadastro_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CADASTRO\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CADASTRO\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <allegro5/allegro.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_font.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFundo}{Fundo}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRegistroJogador}{RegistroJogador}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ std::string\ \mbox{\hyperlink{classRegistroJogador_a0d3c4fb41ec4a475036d43654b5f51cc}{apelido}};}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRegistroJogador_a7773c8d7fe12c627d2e5aa6da7bc907d}{ultima\_pontuacao}};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRegistroJogador_a7107b20d4924c3eb83f06a5e8f3e32e6}{recorde}};}
+\DoxyCodeLine{00016\ \ \ \ \ ALLEGRO\_COLOR\ \mbox{\hyperlink{classRegistroJogador_a64ee68b51d7450e2e1376cf4cb7e9744}{cor}};}
+\DoxyCodeLine{00017\ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classRegistroJogador}{RegistroJogador}}(std::string\ \mbox{\hyperlink{classRegistroJogador_a0d3c4fb41ec4a475036d43654b5f51cc}{apelido}}\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{int}\ ultima\ =\ 0,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRegistroJogador_a7107b20d4924c3eb83f06a5e8f3e32e6}{recorde}}\ =\ 0,\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ALLEGRO\_COLOR\ \mbox{\hyperlink{classRegistroJogador_a64ee68b51d7450e2e1376cf4cb7e9744}{cor}}\ =\ al\_map\_rgb(255,\ 255,\ 255));}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCadastro}{Cadastro}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ std::vector<RegistroJogador>\ \mbox{\hyperlink{classCadastro_ac2b2f5489f0d6b673772b67106fa5477}{registros}};}
+\DoxyCodeLine{00025\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{classCadastro_af4cbcf313cd0ff2c3e8e0b03f833d7af}{fonte}};}
+\DoxyCodeLine{00026\ \ \ \ \ std::string\ \mbox{\hyperlink{classCadastro_aa5cbceccd7d7265b7c5f3db604be801b}{arquivo\_dados}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{classRegistroJogador}{RegistroJogador}}*\ \mbox{\hyperlink{classCadastro_a37d8b8f67135876dbba4b263ef5a218a}{buscar\_registro}}(\textcolor{keyword}{const}\ std::string\&\ apelido);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCadastro_a036eab24b92d3d9c474b6933ca04ac53}{ordenar\_ranking}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classCadastro_a6a3a70840193b4bef174cba0a75f7501}{\string~Cadastro}}();}
+\DoxyCodeLine{00034\ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classCadastro}{Cadastro}}(ALLEGRO\_FONT*\ \mbox{\hyperlink{classCadastro_af4cbcf313cd0ff2c3e8e0b03f833d7af}{fonte}},\ \textcolor{keyword}{const}\ std::string\&\ arquivo,\ \textcolor{keywordtype}{bool}\ carregarImagens);}
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCadastro_ae7b864a62fe93bcdd8ff92633dffc466}{processar\_tela\_cadastro}}(ALLEGRO\_EVENT\_QUEUE*\ fila\_eventos,\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ALLEGRO\_DISPLAY*\ display,\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\&\ apelido\_saida,\ \mbox{\hyperlink{classFundo}{Fundo}}\&\ fundo\_do\_jogo);\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCadastro_a855d74560985c3c7dc465bc0b833d316}{registrar\_jogador}}(\textcolor{keyword}{const}\ std::string\&\ apelido);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCadastro_a31eb9fdeb3e8da49be5bf11f372fbdb4}{registrar\_pontuacao}}(\textcolor{keyword}{const}\ std::string\&\ apelido,\ \textcolor{keywordtype}{int}\ pontos\_jogo);}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCadastro_af668cee287f8efb01a6309a1de3cfc08}{salvar\_dados}}();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCadastro_aa31b6204f9c03717d53807cf204228e6}{carregar\_dados}}();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCadastro_a2ee67f4c2ab2922635d499887b69bcd6}{exibir\_ranking}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ ALLEGRO\_DISPLAY*\ display)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCadastro_a5e53d5d58d82e685ae0d56753a0e0b8e}{carregar\_imagens}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classCadastro_ab7d065e51f3ac94698587b65b0856a3f}{imagem\_caixa\_texto\_1}};}
+\DoxyCodeLine{00048\ \ \ \ \ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classCadastro_abf9b1391799068bc4b5fad18ed55567b}{imag\_iniciar}};}
+\DoxyCodeLine{00049\ \ \ \ \ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classCadastro_af2c73068e4f1cc146596b802ecb920f9}{imag\_caixa}};}
+\DoxyCodeLine{00050\ \ \ \ \ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classCadastro_afaa047ef6c4f058e1bf68c3e71605b8d}{imag\_cadastro}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classCadastro_a16f550f8d16dc75b0efbb83b6fb8457b}{imagem\_fundo\_ranking}};}
+\DoxyCodeLine{00053\ \ \ \ \ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classCadastro_a839f4afe3a4d26d07bac84171758540e}{imagem\_fundo\_ranking2}};}
+\DoxyCodeLine{00054\ \ \ \ \ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classCadastro_a980abea2cdd01828fcdeb92012f7e4d4}{imagem\_caixa\_instrucoes}};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classCadastro_a2f1b8fe9c7de61294278cd87061baec9}{getImagemCaixaInstrucoes}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

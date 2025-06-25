@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['failure_5fflags_0',['failure_flags',['../structdoctest_1_1CurrentTestCaseStats.html#aaa58c52fd07a20e6e4daf19eecb2e2ba',1,'doctest::CurrentTestCaseStats']]],
+  ['fila_5feventos_1',['fila_eventos',['../classJogo.html#aa8c372bcef117034b0d1673811ed555c',1,'Jogo']]],
+  ['first_2',['first',['../structdoctest_1_1ContextOptions.html#a9f26ee60a5259e73f9f25ce3f4883a97',1,'doctest::ContextOptions']]],
+  ['flipped_3',['flipped',['../structdoctest_1_1IsNaN.html#a3c25335f2708d9360b8e92813b3ac17d',1,'doctest::IsNaN']]],
+  ['fonte_4',['fonte',['../classCadastro.html#af4cbcf313cd0ff2c3e8e0b03f833d7af',1,'Cadastro::fonte'],['../classJogo.html#a7589646d47d672b420ff4af942ebeb5a',1,'Jogo::fonte']]],
+  ['fonte2_5',['fonte2',['../classJogo.html#a82700b02d73b5fae26d5a7f5da6459c7',1,'Jogo']]],
+  ['fonte_5fbase_6',['fonte_base',['../definicoes__assets_8cpp.html#abaf8ed7e5183e63bcd64a50597c17e21',1,'FONTE_BASE:&#160;definicoes_assets.cpp'],['../constants_8h.html#abaf8ed7e5183e63bcd64a50597c17e21',1,'FONTE_BASE:&#160;definicoes_assets.cpp']]],
+  ['fonte_5fgame_5fover_7',['fonte_game_over',['../classPontos.html#ad17298d5f561933c50035d90ab82aa55',1,'Pontos::fonte_game_over'],['../constants_8h.html#a30ac2d135bedeaf2bcdf321cbe26bec6',1,'FONTE_GAME_OVER:&#160;definicoes_assets.cpp'],['../definicoes__assets_8cpp.html#a30ac2d135bedeaf2bcdf321cbe26bec6',1,'FONTE_GAME_OVER:&#160;definicoes_assets.cpp']]],
+  ['fonte_5fscore_8',['fonte_score',['../classPontos.html#a85c971536864e25bb4173ae0b8925d80',1,'Pontos']]],
+  ['forca_5fpulo_9',['FORCA_PULO',['../constants_8h.html#a3d5d5a620cb7d1880e0208d6f8aab2ab',1,'constants.h']]],
+  ['force_5fcolors_10',['force_colors',['../structdoctest_1_1ContextOptions.html#a8cd276e86a209f3d5486eb6c5a2a29bf',1,'doctest::ContextOptions']]],
+  ['frame_5fatual_11',['frame_atual',['../classJogador.html#a1117070fd39e88bf91474d3bd5b99250',1,'Jogador']]],
+  ['fundo_5fcadastro_12',['fundo_cadastro',['../definicoes__assets_8cpp.html#af2d5819266aa5fec06ce61cd3b00fb79',1,'FUNDO_CADASTRO:&#160;definicoes_assets.cpp'],['../constants_8h.html#af2d5819266aa5fec06ce61cd3b00fb79',1,'FUNDO_CADASTRO:&#160;definicoes_assets.cpp']]],
+  ['fundo_5fespiral_13',['fundo_espiral',['../definicoes__assets_8cpp.html#ae743ae87abb3b4d0c517b9dd4e94b2b4',1,'FUNDO_ESPIRAL:&#160;definicoes_assets.cpp'],['../constants_8h.html#ae743ae87abb3b4d0c517b9dd4e94b2b4',1,'FUNDO_ESPIRAL:&#160;definicoes_assets.cpp']]],
+  ['fundo_5fespiral_5fframe_5f1_14',['fundo_espiral_frame_1',['../definicoes__assets_8cpp.html#a449e3d3b5a91fbcd6f1fe8b0301f6368',1,'FUNDO_ESPIRAL_FRAME_1:&#160;definicoes_assets.cpp'],['../constants_8h.html#a449e3d3b5a91fbcd6f1fe8b0301f6368',1,'FUNDO_ESPIRAL_FRAME_1:&#160;definicoes_assets.cpp']]],
+  ['fundo_5fespiral_5fframe_5f2_15',['fundo_espiral_frame_2',['../definicoes__assets_8cpp.html#af02a44fc79b57611ed4b12ca026c1ab4',1,'FUNDO_ESPIRAL_FRAME_2:&#160;definicoes_assets.cpp'],['../constants_8h.html#af02a44fc79b57611ed4b12ca026c1ab4',1,'FUNDO_ESPIRAL_FRAME_2:&#160;definicoes_assets.cpp']]],
+  ['fundo_5fespiral_5fframe_5f3_16',['fundo_espiral_frame_3',['../definicoes__assets_8cpp.html#a34bf3493fd0cc82203243db649ba8caa',1,'FUNDO_ESPIRAL_FRAME_3:&#160;definicoes_assets.cpp'],['../constants_8h.html#a34bf3493fd0cc82203243db649ba8caa',1,'FUNDO_ESPIRAL_FRAME_3:&#160;definicoes_assets.cpp']]],
+  ['fundo_5fjogo_17',['fundo_jogo',['../definicoes__assets_8cpp.html#ac25fdd0d869f7219a00093f881f7071c',1,'FUNDO_JOGO:&#160;definicoes_assets.cpp'],['../constants_8h.html#ac25fdd0d869f7219a00093f881f7071c',1,'FUNDO_JOGO:&#160;definicoes_assets.cpp']]],
+  ['fundo_5ftextos_18',['fundo_textos',['../definicoes__assets_8cpp.html#a4b0ea7109de87923dd794ce754dfa00c',1,'FUNDO_TEXTOS:&#160;definicoes_assets.cpp'],['../constants_8h.html#a4b0ea7109de87923dd794ce754dfa00c',1,'FUNDO_TEXTOS:&#160;definicoes_assets.cpp']]]
+];

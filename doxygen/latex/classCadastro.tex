@@ -1,0 +1,209 @@
+\doxysection{Cadastro Class Reference}
+\hypertarget{classCadastro}{}\label{classCadastro}\index{Cadastro@{Cadastro}}
+
+
+{\ttfamily \#include $<$cadastro.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCadastro_a6a3a70840193b4bef174cba0a75f7501}{\texorpdfstring{$\sim$}{\string~}\+Cadastro}} ()
+\item 
+\mbox{\hyperlink{classCadastro_a8c1d54c7dd4bb851b54801bf60df3d99}{Cadastro}} (ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classCadastro_af4cbcf313cd0ff2c3e8e0b03f833d7af}{fonte}}, const std\+::string \&arquivo, bool carregar\+Imagens)
+\item 
+bool \mbox{\hyperlink{classCadastro_ae7b864a62fe93bcdd8ff92633dffc466}{processar\+\_\+tela\+\_\+cadastro}} (ALLEGRO\+\_\+\+EVENT\+\_\+\+QUEUE \texorpdfstring{$\ast$}{*}fila\+\_\+eventos, ALLEGRO\+\_\+\+DISPLAY \texorpdfstring{$\ast$}{*}display, std\+::string \&apelido\+\_\+saida, \mbox{\hyperlink{classFundo}{Fundo}} \&fundo\+\_\+do\+\_\+jogo)
+\item 
+bool \mbox{\hyperlink{classCadastro_a855d74560985c3c7dc465bc0b833d316}{registrar\+\_\+jogador}} (const std\+::string \&apelido)
+\item 
+bool \mbox{\hyperlink{classCadastro_a31eb9fdeb3e8da49be5bf11f372fbdb4}{registrar\+\_\+pontuacao}} (const std\+::string \&apelido, int pontos\+\_\+jogo)
+\item 
+bool \mbox{\hyperlink{classCadastro_af668cee287f8efb01a6309a1de3cfc08}{salvar\+\_\+dados}} ()
+\item 
+bool \mbox{\hyperlink{classCadastro_aa31b6204f9c03717d53807cf204228e6}{carregar\+\_\+dados}} ()
+\item 
+void \mbox{\hyperlink{classCadastro_a2ee67f4c2ab2922635d499887b69bcd6}{exibir\+\_\+ranking}} (int x, int y, ALLEGRO\+\_\+\+DISPLAY \texorpdfstring{$\ast$}{*}display) const
+\item 
+void \mbox{\hyperlink{classCadastro_a5e53d5d58d82e685ae0d56753a0e0b8e}{carregar\+\_\+imagens}} ()
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCadastro_a2f1b8fe9c7de61294278cd87061baec9}{get\+Imagem\+Caixa\+Instrucoes}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCadastro_ab7d065e51f3ac94698587b65b0856a3f}{imagem\+\_\+caixa\+\_\+texto\+\_\+1}}
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCadastro_abf9b1391799068bc4b5fad18ed55567b}{imag\+\_\+iniciar}}
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCadastro_af2c73068e4f1cc146596b802ecb920f9}{imag\+\_\+caixa}}
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCadastro_afaa047ef6c4f058e1bf68c3e71605b8d}{imag\+\_\+cadastro}}
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCadastro_a16f550f8d16dc75b0efbb83b6fb8457b}{imagem\+\_\+fundo\+\_\+ranking}}
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCadastro_a839f4afe3a4d26d07bac84171758540e}{imagem\+\_\+fundo\+\_\+ranking2}}
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCadastro_a980abea2cdd01828fcdeb92012f7e4d4}{imagem\+\_\+caixa\+\_\+instrucoes}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRegistroJogador}{Registro\+Jogador}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCadastro_a37d8b8f67135876dbba4b263ef5a218a}{buscar\+\_\+registro}} (const std\+::string \&apelido)
+\item 
+void \mbox{\hyperlink{classCadastro_a036eab24b92d3d9c474b6933ca04ac53}{ordenar\+\_\+ranking}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classRegistroJogador}{Registro\+Jogador}} $>$ \mbox{\hyperlink{classCadastro_ac2b2f5489f0d6b673772b67106fa5477}{registros}}
+\item 
+ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCadastro_af4cbcf313cd0ff2c3e8e0b03f833d7af}{fonte}}
+\item 
+std\+::string \mbox{\hyperlink{classCadastro_aa5cbceccd7d7265b7c5f3db604be801b}{arquivo\+\_\+dados}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCadastro_a6a3a70840193b4bef174cba0a75f7501}\label{classCadastro_a6a3a70840193b4bef174cba0a75f7501} 
+\index{Cadastro@{Cadastro}!````~Cadastro@{\texorpdfstring{$\sim$}{\string~}Cadastro}}
+\index{````~Cadastro@{\texorpdfstring{$\sim$}{\string~}Cadastro}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Cadastro()}{\string~Cadastro()}}
+{\footnotesize\ttfamily Cadastro\+::\texorpdfstring{$\sim$}{\string~}\+Cadastro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classCadastro_a8c1d54c7dd4bb851b54801bf60df3d99}\label{classCadastro_a8c1d54c7dd4bb851b54801bf60df3d99} 
+\index{Cadastro@{Cadastro}!Cadastro@{Cadastro}}
+\index{Cadastro@{Cadastro}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{Cadastro()}{Cadastro()}}
+{\footnotesize\ttfamily Cadastro\+::\+Cadastro (\begin{DoxyParamCaption}\item[{ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}}]{fonte,  }\item[{const std\+::string \&}]{arquivo,  }\item[{bool}]{carregar\+Imagens }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCadastro_a37d8b8f67135876dbba4b263ef5a218a}\label{classCadastro_a37d8b8f67135876dbba4b263ef5a218a} 
+\index{Cadastro@{Cadastro}!buscar\_registro@{buscar\_registro}}
+\index{buscar\_registro@{buscar\_registro}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{buscar\_registro()}{buscar\_registro()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRegistroJogador}{Registro\+Jogador}} \texorpdfstring{$\ast$}{*} Cadastro\+::buscar\+\_\+registro (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{apelido }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classCadastro_aa31b6204f9c03717d53807cf204228e6}\label{classCadastro_aa31b6204f9c03717d53807cf204228e6} 
+\index{Cadastro@{Cadastro}!carregar\_dados@{carregar\_dados}}
+\index{carregar\_dados@{carregar\_dados}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{carregar\_dados()}{carregar\_dados()}}
+{\footnotesize\ttfamily bool Cadastro\+::carregar\+\_\+dados (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classCadastro_a5e53d5d58d82e685ae0d56753a0e0b8e}\label{classCadastro_a5e53d5d58d82e685ae0d56753a0e0b8e} 
+\index{Cadastro@{Cadastro}!carregar\_imagens@{carregar\_imagens}}
+\index{carregar\_imagens@{carregar\_imagens}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{carregar\_imagens()}{carregar\_imagens()}}
+{\footnotesize\ttfamily void Cadastro\+::carregar\+\_\+imagens (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classCadastro_a2ee67f4c2ab2922635d499887b69bcd6}\label{classCadastro_a2ee67f4c2ab2922635d499887b69bcd6} 
+\index{Cadastro@{Cadastro}!exibir\_ranking@{exibir\_ranking}}
+\index{exibir\_ranking@{exibir\_ranking}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{exibir\_ranking()}{exibir\_ranking()}}
+{\footnotesize\ttfamily void Cadastro\+::exibir\+\_\+ranking (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{ALLEGRO\+\_\+\+DISPLAY \texorpdfstring{$\ast$}{*}}]{display }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classCadastro_a2f1b8fe9c7de61294278cd87061baec9}\label{classCadastro_a2f1b8fe9c7de61294278cd87061baec9} 
+\index{Cadastro@{Cadastro}!getImagemCaixaInstrucoes@{getImagemCaixaInstrucoes}}
+\index{getImagemCaixaInstrucoes@{getImagemCaixaInstrucoes}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{getImagemCaixaInstrucoes()}{getImagemCaixaInstrucoes()}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} Cadastro\+::get\+Imagem\+Caixa\+Instrucoes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classCadastro_a036eab24b92d3d9c474b6933ca04ac53}\label{classCadastro_a036eab24b92d3d9c474b6933ca04ac53} 
+\index{Cadastro@{Cadastro}!ordenar\_ranking@{ordenar\_ranking}}
+\index{ordenar\_ranking@{ordenar\_ranking}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{ordenar\_ranking()}{ordenar\_ranking()}}
+{\footnotesize\ttfamily void Cadastro\+::ordenar\+\_\+ranking (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classCadastro_ae7b864a62fe93bcdd8ff92633dffc466}\label{classCadastro_ae7b864a62fe93bcdd8ff92633dffc466} 
+\index{Cadastro@{Cadastro}!processar\_tela\_cadastro@{processar\_tela\_cadastro}}
+\index{processar\_tela\_cadastro@{processar\_tela\_cadastro}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{processar\_tela\_cadastro()}{processar\_tela\_cadastro()}}
+{\footnotesize\ttfamily bool Cadastro\+::processar\+\_\+tela\+\_\+cadastro (\begin{DoxyParamCaption}\item[{ALLEGRO\+\_\+\+EVENT\+\_\+\+QUEUE \texorpdfstring{$\ast$}{*}}]{fila\+\_\+eventos,  }\item[{ALLEGRO\+\_\+\+DISPLAY \texorpdfstring{$\ast$}{*}}]{display,  }\item[{std\+::string \&}]{apelido\+\_\+saida,  }\item[{\mbox{\hyperlink{classFundo}{Fundo}} \&}]{fundo\+\_\+do\+\_\+jogo }\end{DoxyParamCaption})}
+
+\Hypertarget{classCadastro_a855d74560985c3c7dc465bc0b833d316}\label{classCadastro_a855d74560985c3c7dc465bc0b833d316} 
+\index{Cadastro@{Cadastro}!registrar\_jogador@{registrar\_jogador}}
+\index{registrar\_jogador@{registrar\_jogador}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{registrar\_jogador()}{registrar\_jogador()}}
+{\footnotesize\ttfamily bool Cadastro\+::registrar\+\_\+jogador (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{apelido }\end{DoxyParamCaption})}
+
+\Hypertarget{classCadastro_a31eb9fdeb3e8da49be5bf11f372fbdb4}\label{classCadastro_a31eb9fdeb3e8da49be5bf11f372fbdb4} 
+\index{Cadastro@{Cadastro}!registrar\_pontuacao@{registrar\_pontuacao}}
+\index{registrar\_pontuacao@{registrar\_pontuacao}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{registrar\_pontuacao()}{registrar\_pontuacao()}}
+{\footnotesize\ttfamily bool Cadastro\+::registrar\+\_\+pontuacao (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{apelido,  }\item[{int}]{pontos\+\_\+jogo }\end{DoxyParamCaption})}
+
+\Hypertarget{classCadastro_af668cee287f8efb01a6309a1de3cfc08}\label{classCadastro_af668cee287f8efb01a6309a1de3cfc08} 
+\index{Cadastro@{Cadastro}!salvar\_dados@{salvar\_dados}}
+\index{salvar\_dados@{salvar\_dados}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{salvar\_dados()}{salvar\_dados()}}
+{\footnotesize\ttfamily bool Cadastro\+::salvar\+\_\+dados (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCadastro_aa5cbceccd7d7265b7c5f3db604be801b}\label{classCadastro_aa5cbceccd7d7265b7c5f3db604be801b} 
+\index{Cadastro@{Cadastro}!arquivo\_dados@{arquivo\_dados}}
+\index{arquivo\_dados@{arquivo\_dados}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{arquivo\_dados}{arquivo\_dados}}
+{\footnotesize\ttfamily std\+::string Cadastro\+::arquivo\+\_\+dados\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classCadastro_af4cbcf313cd0ff2c3e8e0b03f833d7af}\label{classCadastro_af4cbcf313cd0ff2c3e8e0b03f833d7af} 
+\index{Cadastro@{Cadastro}!fonte@{fonte}}
+\index{fonte@{fonte}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{fonte}{fonte}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+FONT\texorpdfstring{$\ast$}{*} Cadastro\+::fonte\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classCadastro_afaa047ef6c4f058e1bf68c3e71605b8d}\label{classCadastro_afaa047ef6c4f058e1bf68c3e71605b8d} 
+\index{Cadastro@{Cadastro}!imag\_cadastro@{imag\_cadastro}}
+\index{imag\_cadastro@{imag\_cadastro}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{imag\_cadastro}{imag\_cadastro}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Cadastro\+::imag\+\_\+cadastro}
+
+\Hypertarget{classCadastro_af2c73068e4f1cc146596b802ecb920f9}\label{classCadastro_af2c73068e4f1cc146596b802ecb920f9} 
+\index{Cadastro@{Cadastro}!imag\_caixa@{imag\_caixa}}
+\index{imag\_caixa@{imag\_caixa}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{imag\_caixa}{imag\_caixa}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Cadastro\+::imag\+\_\+caixa}
+
+\Hypertarget{classCadastro_abf9b1391799068bc4b5fad18ed55567b}\label{classCadastro_abf9b1391799068bc4b5fad18ed55567b} 
+\index{Cadastro@{Cadastro}!imag\_iniciar@{imag\_iniciar}}
+\index{imag\_iniciar@{imag\_iniciar}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{imag\_iniciar}{imag\_iniciar}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Cadastro\+::imag\+\_\+iniciar}
+
+\Hypertarget{classCadastro_a980abea2cdd01828fcdeb92012f7e4d4}\label{classCadastro_a980abea2cdd01828fcdeb92012f7e4d4} 
+\index{Cadastro@{Cadastro}!imagem\_caixa\_instrucoes@{imagem\_caixa\_instrucoes}}
+\index{imagem\_caixa\_instrucoes@{imagem\_caixa\_instrucoes}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{imagem\_caixa\_instrucoes}{imagem\_caixa\_instrucoes}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Cadastro\+::imagem\+\_\+caixa\+\_\+instrucoes}
+
+\Hypertarget{classCadastro_ab7d065e51f3ac94698587b65b0856a3f}\label{classCadastro_ab7d065e51f3ac94698587b65b0856a3f} 
+\index{Cadastro@{Cadastro}!imagem\_caixa\_texto\_1@{imagem\_caixa\_texto\_1}}
+\index{imagem\_caixa\_texto\_1@{imagem\_caixa\_texto\_1}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{imagem\_caixa\_texto\_1}{imagem\_caixa\_texto\_1}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Cadastro\+::imagem\+\_\+caixa\+\_\+texto\+\_\+1}
+
+\Hypertarget{classCadastro_a16f550f8d16dc75b0efbb83b6fb8457b}\label{classCadastro_a16f550f8d16dc75b0efbb83b6fb8457b} 
+\index{Cadastro@{Cadastro}!imagem\_fundo\_ranking@{imagem\_fundo\_ranking}}
+\index{imagem\_fundo\_ranking@{imagem\_fundo\_ranking}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{imagem\_fundo\_ranking}{imagem\_fundo\_ranking}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Cadastro\+::imagem\+\_\+fundo\+\_\+ranking}
+
+\Hypertarget{classCadastro_a839f4afe3a4d26d07bac84171758540e}\label{classCadastro_a839f4afe3a4d26d07bac84171758540e} 
+\index{Cadastro@{Cadastro}!imagem\_fundo\_ranking2@{imagem\_fundo\_ranking2}}
+\index{imagem\_fundo\_ranking2@{imagem\_fundo\_ranking2}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{imagem\_fundo\_ranking2}{imagem\_fundo\_ranking2}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Cadastro\+::imagem\+\_\+fundo\+\_\+ranking2}
+
+\Hypertarget{classCadastro_ac2b2f5489f0d6b673772b67106fa5477}\label{classCadastro_ac2b2f5489f0d6b673772b67106fa5477} 
+\index{Cadastro@{Cadastro}!registros@{registros}}
+\index{registros@{registros}!Cadastro@{Cadastro}}
+\doxysubsubsection{\texorpdfstring{registros}{registros}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classRegistroJogador}{Registro\+Jogador}}$>$ Cadastro\+::registros\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{cadastro_8hpp}{cadastro.\+hpp}}\item 
+src/\mbox{\hyperlink{cadastro_8cpp}{cadastro.\+cpp}}\end{DoxyCompactItemize}

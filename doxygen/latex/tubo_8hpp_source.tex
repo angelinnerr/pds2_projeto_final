@@ -1,0 +1,39 @@
+\doxysection{tubo.\+hpp}
+\hypertarget{tubo_8hpp_source}{}\label{tubo_8hpp_source}\index{include/tubo.hpp@{include/tubo.hpp}}
+\mbox{\hyperlink{tubo_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TUBO\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TUBO\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <allegro5/allegro.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTubo}{Tubo}}\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTubo_a9905bc925982b93815e8035ba2c6f033}{x}};}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTubo_a1e64bf176f32a8fc5dfbd22acc512579}{altura\_abertura}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{static}\ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classTubo_adb12321c3688a3494ea99a08b237e33d}{imagem\_cima}};}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{static}\ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classTubo_a1dd7f256827cbfda4d4cb5171f4bba05}{imagem\_baixo}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{static}\ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classTubo_a3990d634771fa168e866626793de2b85}{tubo\_colorido\_cima}};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{static}\ ALLEGRO\_BITMAP*\ \mbox{\hyperlink{classTubo_abeb628ae5cf60fa818785231d2a7f5d7}{tubo\_colorido\_baixo}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTubo_ab624279085b735cd1f24480791b26885}{usar\_tubo\_colorido}};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTubo_a06c5265e28373caeb1203d57f03f2b52}{set\_usar\_imagens\_coloridas}}(\textcolor{keywordtype}{bool}\ usar);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classTubo}{Tubo}}(\textcolor{keywordtype}{int}\ posicao\_x);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTubo_a80eeab7da328855881800146874effc3}{atualizar}}();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTubo_a8a442af8d5b2f1a52c478c29a2a47d0d}{desenhar}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTubo_a70741ce239a9041643608a8dadf6c216}{colide}}(\textcolor{keywordtype}{int}\ jogador\_x,\ \textcolor{keywordtype}{int}\ jogador\_y,\ \textcolor{keywordtype}{int}\ jogador\_largura,\ \textcolor{keywordtype}{int}\ jogador\_altura);}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTubo_af06b9fe32fa38d6940fa3ce375a584ad}{estaForaDaTela}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTubo_a2e0078861e6344d1aa7d5ee83b3abdf0}{resetar}}(\textcolor{keywordtype}{int}\ nova\_posicao\_x);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTubo_a175a49a6b038a7a49891bcabf9deca8e}{getAbertura}}();}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tubo_8hpp_a73096fdb8d7755c95d2306c86691dbc8}{carregar\_imagens\_tubo}}();}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tubo_8hpp_a76a95c5606b74d3484a864788db549c4}{carregar\_tubo\_colorido}}();}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tubo_8hpp_a7c93903da5e037bc8fe6225755883156}{destruir\_imagens\_tubo}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

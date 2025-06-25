@@ -1,0 +1,35 @@
+\doxysection{pontos.\+hpp}
+\hypertarget{pontos_8hpp_source}{}\label{pontos_8hpp_source}\index{include/pontos.hpp@{include/pontos.hpp}}
+\mbox{\hyperlink{pontos_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#\ ifndef\ PONTOS\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#\ define\ PONTOS\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_font.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <allegro5/allegro.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_ttf.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPontos}{Pontos}}\{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPontos}{Pontos}}(\textcolor{keywordtype}{bool}\ carregar\_fontes);\ \textcolor{comment}{//\ construtor}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ ALLEGRO\_FONT*\ \mbox{\hyperlink{classPontos_a85c971536864e25bb4173ae0b8925d80}{fonte\_score}};}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ ALLEGRO\_FONT*\ \mbox{\hyperlink{classPontos_ac5ac564b6bb53a5c87b5bde1e3ef5352}{sombra\_fonte}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ ALLEGRO\_FONT*\ \mbox{\hyperlink{classPontos_ad17298d5f561933c50035d90ab82aa55}{fonte\_game\_over}};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ ALLEGRO\_FONT*\ \mbox{\hyperlink{classPontos_a0c2b9c8b6f2154502f4444c4892b97d9}{sombra\_game\_over}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPontos_adf9fe2750c472d2420085530995fea12}{carrega\_fontes}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPontos_a09228e76caee0fc8bf91c4c039a8cbca}{verificar}}(\textcolor{keywordtype}{int}\ posicaoJogador,\ \textcolor{keywordtype}{int}\ posicaoTubo);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPontos_a987cd93a1671da9c1d9df3fffd162538}{atualizar}}();}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPontos_a5ad4181d023d3acac2acb420dfb2ad8d}{reset}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPontos_ae263181de3ba07ad77e0998c37e61e46}{getScore}}()\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPontos_a47a87955d7d8169a4d80f76970fe6dab}{score}};}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#\ endif}}
+
+\end{DoxyCode}
